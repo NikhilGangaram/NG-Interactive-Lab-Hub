@@ -82,6 +82,14 @@ Storyboards are a tool for visually exploring a users interaction with a device.
 
 \*\***Include pictures of your storyboards here**\*\*
 
+![Board 1](storyboards/board_1.jpeg "Board 1")
+![Board 2](storyboards/board_2.jpeg "Board 2")
+![Board 3](storyboards/board_3.jpeg "Board 3")
+![Board 4](storyboards/board_4.jpeg "Board 4")
+![Board 5](storyboards/board_5.jpeg "Board 5")
+![Board 6](storyboards/board_6.jpeg "Board 6")
+![Board 7](storyboards/board_7.jpeg "Board 7")
+
 **Please note that our group used AI tools while brainstorming different interactions that users may have with the device. Also, AI tools were used to generate some early drafts of storyboards like the one shown below (which was created using Gemini):** 
 
 ![AI Draft](storyboards/ai_draft.png "AI Draft for Grabbing Ingredients")
