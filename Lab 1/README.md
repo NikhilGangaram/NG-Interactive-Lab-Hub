@@ -100,13 +100,14 @@ Present your ideas to the other people in your breakout room (or in small groups
 
 **Here is a summarized list of feedback we gathered from others. We also had a chance to gather some feedback from other friends on campus:**
 
-* The product should include voice to make the device more accessible to people with disabilities like color blindness. 
-* The product should be able to communicate a slightly incomplete set of ingredients. 
-* The product should have the ability to guide impromptu recipes, not just ones  from a pre-created list.
-* The product should also have global knowledge of a uder's kitchen (pantry, utensils, cooking mediums, etc.).
-* The product could also help the user optimize how they store their ingredients to maximize space and proper placement. 
-* The product can help the user plan meals (when to thaw ingredients, creating recipes that best balance remaining ingredients, etc.). 
+* The product should include voice to make the device **more accessible to people with disabilities like color blindness**. 
+* The product should be able to communicate a slightly **incomplete set of ingredients** - both for purchasing and for deciding if the current set is acceptable to still cook with. 
+* The product should have the **ability to guide impromptu recipes**, not just ones from a pre-created list.
+* The product should also have **global knowledge of a user's kitchen** (pantry, utensils, cooktops, etc.).
+* The product could also help the user **optimize how they store their ingredients** to maximize space and proper placement. 
+* The product can help the user **plan meals** (when to thaw ingredients, creating recipes that best balance remaining ingredients, etc.). 
 
+**Please note that no AI tools were used when aggregating this feedback.**
 
 
 ## Part B. Act out the Interaction
