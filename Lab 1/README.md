@@ -74,9 +74,15 @@ The interactive device can be anything *except* a computer, a tablet computer or
 
 \*\***Describe your setting, players, activity and goals here.**\*\*
 
+The goal of our interactive device is to act as "Duolingo for cooking". I am working on this together with Sachin Jojode as I have mentioned above, and we have heavily constrained our solution to only use light as a medium for communication. The setting we came up with was in an every day fridge, a helpful assistant I can guide you and turn you into a better home chef. Imagine a light box that sits at the top of your fridge and has knowledge of what else exists inside your fridge in pantry. You can ask me questions like: "do I have enough ingredients for pesto pasta"; and it not only answer that question, but can also guide you as you gather ingredients to prepare the dish. In this case, the players would be anyone interested in cooking something at home and we intend for this device to be used primarily with one or a small group of people. The primary activity here is to both gather the right ingredients to prepare a dish as well as to build the users intuition as a chef.
+
+Please note that no AI tools were used to conceive this idea, the only automated tool was using voice to text to "type" out this paragraph. 
+
 Storyboards are a tool for visually exploring a users interaction with a device. They are a fast and cheap method to understand user flow, and iterate on a design before attempting to build on it. Take some time to read through this explanation of [storyboarding in UX design](https://www.smashingmagazine.com/2017/10/storyboarding-ux-design/). Sketch seven storyboards of the interactions you are planning. **It does not need to be perfect**, but must get across the behavior of the interactive device and the other characters in the scene. 
 
 \*\***Include pictures of your storyboards here**\*\*
+
+Coming soon… Please note that our group used AI tools while brainstorming different interactions that users may have with the device. 
 
 Present your ideas to the other people in your breakout room (or in small groups). You can just get feedback from one another or you can work together on the other parts of the lab.
 
