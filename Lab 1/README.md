@@ -100,7 +100,7 @@ Present your ideas to the other people in your breakout room (or in small groups
 
 **Here is a summarized list of feedback we gathered from others. We also had a chance to gather some feedback from other friends on campus:**
 
-* The product should include voice to make the device **more accessible to people with disabilities like color blindness**. 
+* The product should include voice / other communicatory techniques to make the device **more accessible to people with disabilities like color blindness**. 
 * The product should be able to communicate a slightly **incomplete set of ingredients** - both for purchasing and for deciding if the current set is acceptable to still cook with. 
 * The product should have the **ability to guide impromptu recipes**, not just ones from a pre-created list.
 * The product should also have **global knowledge of a user's kitchen** (pantry, utensils, cooktops, etc.).
