@@ -145,14 +145,16 @@ If you run into technical issues with this tool, you can also use a light switch
 
 \*\***Give us feedback on Tinkerbelle.**\*\*
 
-While Tinkerbelle seems like a great tool, both easy to setup and to use, my group partner lives at home while I am at school, so we couldn't use it for our interaction. Instead, we chose to use a simpler solution where we controlled a google slides presentation over zoom to change the colors of the lights. We assumed that this would make it easier to record the interactions for later parts of the lab as well. There are more details of this approach in the following section.
+While Tinkerbelle seems like a great tool, my group partner lives at home while I am at school, so we couldn't use it for our interaction. Instead, we chose to use a simpler solution where we controlled a google slides presentation over zoom to change the colors of the lights. We assumed that this would make it easier to record the interactions for later parts of the lab as well. There are more details of this approach in the following section.
 
 ## Part D. Wizard the device
 Take a little time to set up the wizarding set-up that allows for someone to remotely control the device while someone acts with it. Hint: You can use Zoom to record videos, and you can pin someone’s video feed if that is the scene which you want to record. 
 
 \*\***Include your first attempts at recording the set-up video here.**\*\*
 
-Now, hange the goal within the same setting, and update the interaction with the paper prototype. 
+Our workaround to not being in the same physical space was to use a Google Slides presentation to control the lights on the device and to record the interaction using a different phone. That way, the Zoom room controlling the phone's light could also see how the user was interacting with the device to change the lighting accordingly. While we initially hoped to use Tinkerbelle and all of its features for the lab, we were pleased with the simplicity and results of this approach. 
+
+Now, change the goal within the same setting, and update the interaction with the paper prototype. 
 
 \*\***Show the follow-up work here.**\*\*
 
