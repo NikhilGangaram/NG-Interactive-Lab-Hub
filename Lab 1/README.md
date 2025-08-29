@@ -172,8 +172,15 @@ Here are the costumes that we came up with:
 ![Sticky](costumes/sticky.jpeg "Sticky ")
 ![Arm](costumes/arm.jpeg "Arm")
 
-For the arm, we took inspiration from the JOBY GorrilaPod camera arm, which we have referenced in part F. 
+Here are the physical prototypes of the devices: 
 
+![Sticky Real](costumes/sticky_real.jpeg "Sticky Real ")
+
+This was made using an old phone, a power bank, tape, and paper to act as the "plastic" enclosure. 
+
+![Arm Real](costumes/arm_real.jpeg "Arm Real")
+
+This was made fully using paper and clear tape. 
 
 \*\***What concerns or opportunitities are influencing the way you've designed the device to look?**\*\*
 
@@ -190,10 +197,7 @@ The primary concerns when designing the sketches were:
 \*\***Please indicate who you collaborated with on this Lab.**\*\*
 Be generous in acknowledging their contributions! And also recognizing any other influences (e.g. from YouTube, Github, Twitter) that informed your design. 
 
-My main collaborator was Sachin Jojode. 
-
-In one of the sketches, we took inspiration from the JOBY GorrilaPod camera arm: [Link](https://joby.com/us-en/gorillapod-arm-kit-jb01532-0ww/)
-
+My main collaborator was Sachin Jojode. My inspiration 
 
 # Staging Interaction, Part 2 
 
