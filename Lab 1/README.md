@@ -116,7 +116,20 @@ Try physically acting out the interaction you planned. For now, you can just pre
 
 \*\***Are there things that seemed better on paper than acted out?**\*\*
 
+* Talking to the device is a bit awkward. It feels like the first days of talking to Siri or Alexa, but we assume this will become more confortable over time.
+* The "action words" will also take some time getting used to; however in practice, we assume that an NLP pipeline will be used to make the interactions more natural.
+* We initially assumed the device would just be mounted on the top of the fridge area, but then tried interacting with the device in multiple fridge types (at both my dorm and Sachin's house) and realized that the "static" viewpoint made seing the light uncomfortable if the fridge was too low (in configurations where the freezer is on top). 
+* Regardless of the position, however, there is the feeling of always needing to "look back at the device" to see its response. The best analogy to this is trying to use "vanilla ChatGPT" for code where you need to constantly switch between your editor and the chat window. Instead, something like "cursor" where the device doesn't distract the user from the task of cooking seems like the more natural solution. However, we concede that this is a function of the device being singular and only communicating through light. 
+
+
+
 \*\***Are there new ideas that occur to you or your collaborator that come up from the acting?**\*\*
+
+* Yes, specifically about the positioning of the device. We had a lot of fun with this and tried many different positions for where the device should be mounted. Primarily, we realized that the best way to do this would be to have a flat side of the device so the user can choose where to place it. 
+* We also realized that the device could be a multi-device network, so that one instance can be in the fridge, another in the pantry, freezer, on top of the island or stove, etc.
+* We think it would be very useful for the device to be able to communicate more nuanced information. For example, different colors could indicate the "correctness" of a user prompt (an example being if the user asks "do you think ketchup would work with pesto", where there isn't a clear answer and it's based on what the device thinks the user's preferences are).
+
+**Please note that no AI tools were used when acting out the interaction or noting down improvements / pain points.**
 
 
 ## Part C. Prototype the device
