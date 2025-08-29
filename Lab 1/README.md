@@ -144,6 +144,7 @@ If you run into technical issues with this tool, you can also use a light switch
 
 \*\***Give us feedback on Tinkerbelle.**\*\*
 
+While Tinkerbelle seems like a great tool, both easy to setup and to use, my group partner lives at home while I am at school, so we couldn't use it for our interaction. Instead, we chose to use a simpler solution where we controlled a google slides presentation over zoom to change the colors of the lights. We assumed that this would make it easier to record the interactions for later parts of the lab as well. There are more details of this approach in the following section.
 
 ## Part D. Wizard the device
 Take a little time to set up the wizarding set-up that allows for someone to remotely control the device while someone acts with it. Hint: You can use Zoom to record videos, and you can pin someone’s video feed if that is the scene which you want to record. 
