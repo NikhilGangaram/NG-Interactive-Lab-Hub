@@ -197,7 +197,7 @@ The primary concerns when designing the sketches were:
 \*\***Please indicate who you collaborated with on this Lab.**\*\*
 Be generous in acknowledging their contributions! And also recognizing any other influences (e.g. from YouTube, Github, Twitter) that informed your design. 
 
-My main collaborator was Sachin Jojode. My inspiration 
+My main collaborator was Sachin Jojode. My inspiration for the arm prototype came from a stock monitor arm, [here](https://www.amazon.com/Amazon-Basics-Adjustable-Computer-Monitors/dp/B0CQXL5S4T?th=1) is a link to a similar-looking product. 
 
 # Staging Interaction, Part 2 
 
