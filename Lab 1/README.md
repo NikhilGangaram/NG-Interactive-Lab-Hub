@@ -171,6 +171,7 @@ Here are the costumes that we came up with:
 
 ![Sticky](costumes/sticky.jpeg "Sticky ")
 ![Arm](costumes/arm.jpeg "Arm")
+![Sleeve](costumes/sleeve.png "Sleeve")
 
 Here are the physical prototypes of the devices: 
 
@@ -182,10 +183,14 @@ This was made using an old phone, a power bank, tape, and paper to act as the "p
 
 This was made fully using paper and clear tape. 
 
+![Sleeve Real](costumes/sleeve_real.jpeg "Sleeve Real")
+
+This was also made using paper and clear tape.
+
 \*\***What concerns or opportunitities are influencing the way you've designed the device to look?**\*\*
 
 The primary concerns when designing the sketches were: 
-* to allow the device to be used in different areas of the fridge, and easily be able to be moved around the fridge. Moving the device should also not be a laborious process.
+* to allow the device to be used in different areas of the fridge, and easily be able to be moved around the fridge. 
 * the design should be able to be easily maintained in case of damage or mess.
 
 
