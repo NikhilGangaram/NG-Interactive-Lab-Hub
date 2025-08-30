@@ -154,10 +154,19 @@ Take a little time to set up the wizarding set-up that allows for someone to rem
 
 Our workaround to not being in the same physical space was to use a Google Slides presentation to control the lights on the device and to record the interaction using a different phone. That way, the Zoom room controlling the phone's light could also see how the user was interacting with the device to change the lighting accordingly. While we initially hoped to use Tinkerbelle and all of its features for the lab, we were pleased with the simplicity and results of this approach. 
 
+<video width="300" height="600" controls>
+  <source src="interactions/wizarding.mov" type="video/mp4">
+</video>
+
 Now, change the goal within the same setting, and update the interaction with the paper prototype. 
 
 \*\***Show the follow-up work here.**\*\*
 
+Here is one of our prototypes interactions with the costumed device: 
+
+<video width="300" height="600" controls>
+  <source src="interactions/interaction_1.mov" type="video/mp4">
+</video>
 
 ## Part E. Costume the device
 
@@ -199,10 +208,24 @@ The primary concerns when designing the sketches were:
 
 \*\***Take a video of your prototyped interaction.**\*\*
 
+Here are the videos of the prototyped interactions:
+
+<video width="300" height="600" controls>
+  <source src="interactions/interaction_1.mov" type="video/mp4">
+</video>
+<video width="300" height="600" controls>
+  <source src="interactions/interaction_2.mov" type="video/mp4">
+</video>
+<video width="300" height="600" controls>
+  <source src="interactions/interaction_3.mov" type="video/mp4">
+</video>
+
+If the videos are not playing properly, they are also in the **interactions** folder.
+
 \*\***Please indicate who you collaborated with on this Lab.**\*\*
 Be generous in acknowledging their contributions! And also recognizing any other influences (e.g. from YouTube, Github, Twitter) that informed your design. 
 
-My main collaborator was Sachin Jojode. My inspiration for the arm prototype came from a stock monitor arm, [here](https://www.amazon.com/Amazon-Basics-Adjustable-Computer-Monitors/dp/B0CQXL5S4T?th=1) is a link to a similar-looking product. 
+My main collaborator was Sachin Jojode. While all of the costumes are inevitably inspired by everyday devices, the arm prototype was specifically inspired by a monitor arm, [here](https://www.amazon.com/Amazon-Basics-Adjustable-Computer-Monitors/dp/B0CQXL5S4T?th=1) is a link to a similar-looking product. 
 
 # Staging Interaction, Part 2 
 
