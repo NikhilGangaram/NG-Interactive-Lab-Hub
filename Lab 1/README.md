@@ -147,6 +147,8 @@ If you run into technical issues with this tool, you can also use a light switch
 
 While Tinkerbelle seems like a great tool, my group partner lives at home while I am at school, so we couldn't use it for our interaction. Instead, we chose to use a simpler solution where we controlled a google slides presentation over zoom to change the colors of the lights. We assumed that this would make it easier to record the interactions for later parts of the lab as well. There are more details of this approach in the following section.
 
+**Please note that no AI tools were used for this part of the lab.**
+
 ## Part D. Wizard the device
 Take a little time to set up the wizarding set-up that allows for someone to remotely control the device while someone acts with it. Hint: You can use Zoom to record videos, and you can pin someone’s video feed if that is the scene which you want to record. 
 
@@ -167,6 +169,8 @@ Here is one of our prototypes interactions with the costumed device:
 <video width="300" height="600" controls>
   <source src="interactions/interaction_1.mov" type="video/mp4">
 </video>
+
+**Please note that no AI tools were used for this part of the lab.**
 
 ## Part E. Costume the device
 
@@ -202,7 +206,7 @@ The primary concerns when designing the sketches were:
 * to allow the device to be used in different areas of the fridge, and easily be able to be moved around the fridge. 
 * the design should be able to be easily maintained in case of damage or mess.
 
-
+**Please note that no AI tools were used to help record the interactions, we did use AI to help embed the videos in the README.md file.**
 
 ## Part F. Record
 
@@ -228,6 +232,8 @@ While the videos render properly on my side, they don't seem to be rendering pro
 Be generous in acknowledging their contributions! And also recognizing any other influences (e.g. from YouTube, Github, Twitter) that informed your design. 
 
 My main collaborator was Sachin Jojode. While all of the costumes are inevitably inspired by everyday devices, the arm prototype was specifically inspired by a monitor arm, [here](https://www.amazon.com/Amazon-Basics-Adjustable-Computer-Monitors/dp/B0CQXL5S4T?th=1) is a link to a similar-looking product. 
+
+**Please note that no AI tools were used for this part of the lab.**
 
 # Staging Interaction, Part 2 
 
