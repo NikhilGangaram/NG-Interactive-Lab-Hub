@@ -220,7 +220,9 @@ Here are the videos of the prototyped interactions:
   <source src="interactions/interaction_3.mov" type="video/mp4">
 </video>
 
-If the videos are not playing properly, they are also in the **interactions** folder.
+While the videos render properly on my side, they don't seem to be rendering properly on the Github side. If the videos are not playing properly, they are also in the **interactions** folder. Here is what my side looks like:
+
+![Github Rendering](interactions/interactions_render.png "Github Rendering")
 
 \*\***Please indicate who you collaborated with on this Lab.**\*\*
 Be generous in acknowledging their contributions! And also recognizing any other influences (e.g. from YouTube, Github, Twitter) that informed your design. 
