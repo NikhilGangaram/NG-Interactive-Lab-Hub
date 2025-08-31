@@ -170,6 +170,8 @@ Here is one of our prototypes interactions with the costumed device:
   <source src="interactions/interaction_1.mov" type="video/mp4">
 </video>
 
+**We tried to embed the videos into this section, however, Github does not seem to be rendering the videos properly. You can see a screenshot of what the VSCode preview looks like in Part F.**
+
 **Please note that no AI tools were used for this part of the lab.**
 
 ## Part E. Costume the device
