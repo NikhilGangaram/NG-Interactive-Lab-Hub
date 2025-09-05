@@ -266,6 +266,30 @@ Do last week’s assignment again, but this time:
 
 ### Storyboards 
 
+Here are our second week's storyboards incorporating the improvements made after aggregating feedback from the first week: 
+
+![Board 1](storyboards/week_2/board_1.png "Board 1")
+![Board 2](storyboards/week_2/board_2.png "Board 2")
+![Board 3](storyboards/week_2/board_3.png "Board 3")
+![Board 4](storyboards/week_2/board_4.png "Board 4")
+![Board 5](storyboards/week_2/board_5.png "Board 5")
+![Board 6](storyboards/week_2/board_6.png "Board 6")
+![Board 7](storyboards/week_2/board_7.png "Board 7")
+
+**Please note that AI was not used to create the storyboards.**
+
 ### Costumes 
 
+Here are our second week's costumes as well as their physical prototypes:
+
+![JOBY](costumes/week_2/joby.png "JOBY ")
+![JOBY Real](costumes/week_2/joby_real.png "JOBY Real ")
+
+**Please note that, due to the JOBY prototype's complexity, we asked for and received permission from Hauke to generate an AI-generated image of the prototype as opposed to making the physical manifestation.**
+
+
 ### Prototyped Interactions 
+
+### Citations 
+
+For the JOBY prototype, the primary inspiration came from the JOBY GorrilaPod camera arm: [Link](https://joby.com/us-en/gorillapod-arm-kit-jb01532-0ww/). Specifically, our team was impressed by how manueverable yet stable the arm was when bearing loads like cameras.
