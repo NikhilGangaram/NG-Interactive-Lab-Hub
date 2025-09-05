@@ -2,7 +2,7 @@
 
 # Staging Interaction
 
-\*\***Sachin Jojode**\*\*
+\*\***Sachin Jojode and Viha Srinivas**\*\*
 
 In the original stage production of Peter Pan, Tinker Bell was represented by a darting light created by a small handheld mirror off-stage, reflecting a little circle of light from a powerful lamp. Tinkerbell communicates her presence through this light to the other characters. See more info [here](https://en.wikipedia.org/wiki/Tinker_Bell). 
 
@@ -74,7 +74,7 @@ The interactive device can be anything *except* a computer, a tablet computer or
 
 \*\***Describe your setting, players, activity and goals here.**\*\*
 
-**The goal of our interactive device is to act as "Duolingo for cooking". I am working on this together with Sachin Jojode as I have mentioned above, and we have heavily constrained our solution to only use light as a medium for communication. The setting we came up with was in an every day fridge, a helpful assistant I can guide you and turn you into a better home chef. Imagine a light box that sits at the top of your fridge and has knowledge of what else exists inside your fridge in pantry. You can ask me questions like: "do I have enough ingredients for pesto pasta"; and it not only answer that question, but can also guide you as you gather ingredients to prepare the dish. In this case, the players would be anyone interested in cooking something at home and we intend for this device to be used primarily with one or a small group of people. The primary activity here is to both gather the right ingredients to prepare a dish as well as to build the users intuition as a chef.**
+**The goal of our interactive device is to act as "Duolingo for cooking". I am working on this together with Sachin Jojode and Viha Srinivas as I have mentioned above, and we have heavily constrained our solution to only use light as a medium for communication. The setting we came up with was in an every day fridge, a helpful assistant I can guide you and turn you into a better home chef. Imagine a light box that sits at the top of your fridge and has knowledge of what else exists inside your fridge in pantry. You can ask me questions like: "do I have enough ingredients for pesto pasta"; and it not only answer that question, but can also guide you as you gather ingredients to prepare the dish. In this case, the players would be anyone interested in cooking something at home and we intend for this device to be used primarily with one or a small group of people. The primary activity here is to both gather the right ingredients to prepare a dish as well as to build the users intuition as a chef.**
 
 **Please note that no AI tools were used to conceive this idea, the only automated tool was using voice to text to "type" out this paragraph.**
 
@@ -233,7 +233,7 @@ While the videos render properly on my side, they don't seem to be rendering pro
 \*\***Please indicate who you collaborated with on this Lab.**\*\*
 Be generous in acknowledging their contributions! And also recognizing any other influences (e.g. from YouTube, Github, Twitter) that informed your design. 
 
-My main collaborator was Sachin Jojode. While all of the costumes are inevitably inspired by everyday devices, the arm prototype was specifically inspired by a monitor arm, [here](https://www.amazon.com/Amazon-Basics-Adjustable-Computer-Monitors/dp/B0CQXL5S4T?th=1) is a link to a similar-looking product. 
+My main collaborators were Sachin Jojode and Viha Srivinas. While all of the costumes are inevitably inspired by everyday devices, the arm prototype was specifically inspired by a monitor arm, [here](https://www.amazon.com/Amazon-Basics-Adjustable-Computer-Monitors/dp/B0CQXL5S4T?th=1) is a link to a similar-looking product. 
 
 **Please note that no AI tools were used for this part of the lab.**
 
@@ -248,6 +248,13 @@ You will be assigned three partners from other groups. Go to their github pages,
 
 \*\***Summarize feedback from your partners here.**\*\*
 
+* Building off of the feedback from our initial design, we are now incorporating sound and vibration into how the device communicates information to the user. 
+* Using these new mediums, the product can now communicate nuanced information. For example, the device can now say "You are missing garlic, but I think you can use garlic powder instead" or "I think you are missing some ingredients, but I can place an order for you".
+* The product should now be able to walk the user through creating impromptu recipes, not just ones from a pre-created list.
+* The product should also have global knowledge of a user's kitchen (pantry, utensils, cooktops, etc.). 
+* The device should also be able to store user preferences and recipe history, so that the device can build user profiles between advanced users and novice users.
+
+
 ## Make it your own
 
 Do last week’s assignment again, but this time: 
@@ -256,3 +263,9 @@ Do last week’s assignment again, but this time:
 3) We will be grading with an emphasis on creativity. 
 
 \*\***Document everything here. (Particularly, we would like to see the storyboard and video, although photos of the prototype are also great.)**\*\*
+
+### Storyboards 
+
+### Costumes 
+
+### Prototyped Interactions 
