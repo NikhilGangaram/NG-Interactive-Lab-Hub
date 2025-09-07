@@ -192,15 +192,15 @@ Here are the physical prototypes of the devices:
 
 ![Sticky Real](costumes/sticky_real.jpeg "Sticky Real ")
 
-This was made using an old phone, a power bank, tape, and paper to act as the "plastic" enclosure. 
+**This was made using an old phone, a power bank, tape, and paper to act as the "plastic" enclosure.**
 
 ![Arm Real](costumes/arm_real.jpeg "Arm Real")
 
-This was made fully using paper and clear tape. 
+**This was made fully using paper and clear tape.**
 
 ![Sleeve Real](costumes/sleeve_real.jpeg "Sleeve Real")
 
-This was also made using paper and clear tape.
+**This was also made using paper and clear tape.**
 
 \*\***What concerns or opportunitities are influencing the way you've designed the device to look?**\*\*
 
@@ -287,8 +287,38 @@ Here are our second week's costumes as well as their physical prototypes:
 
 **Please note that, due to the JOBY prototype's complexity, we asked for and received permission from Hauke to generate an AI-generated image of the prototype as opposed to making the physical manifestation.**
 
+![Gripper](costumes/week_2/gripper.png "Gripper ")
+![Gripper Real](costumes/week_2/gripper_real.png "Gripper Real ")
+
+**The gripper prototype was made using paper and tape.**
+
+![Magsafe](costumes/week_2/magsafe.png "Magsafe ")
+
+**The Magsafe prototype was made using the phone's magsafe and tape.**
+
+
+### Wizarding Setup
+
+Like last week, we used a Google Slides presentation to control the lights on the device and to record the interaction using a different phone. However, we also now mimic an intelligent assistant using a person (Viha in this case) to speak through the Zoom call. Here is a quick video of the setup: 
+
 
 ### Prototyped Interactions 
+
+Here are the prototyped interactions: 
+
+<video width="300" height="600" controls>
+  <source src="interactions/week_2/interaction_1.mov" type="video/mp4">
+</video>
+
+<video width="300" height="600" controls>
+  <source src="interactions/week_2/interaction_2.mov" type="video/mp4">
+</video>
+
+<video width="300" height="600" controls>
+  <source src="interactions/week_2/interaction_3.mov" type="video/mp4">
+</video>
+
+Like last week, we tried to embed the videos into this section, however, Github does not seem to be rendering the videos properly. However, you can see the videos in the **interactions** folder under the **week_2** subfolder.
 
 ### Citations 
 
