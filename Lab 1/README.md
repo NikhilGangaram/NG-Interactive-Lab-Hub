@@ -293,6 +293,7 @@ Here are our second week's costumes as well as their physical prototypes:
 **The gripper prototype was made using paper and tape.**
 
 ![Magsafe](costumes/week_2/magsafe.png "Magsafe ")
+![Magsafe Real](costumes/week_2/magsafe_real.jpeg "Magsafe Real ")
 
 **The Magsafe prototype was made using the phone's magsafe and tape.**
 
@@ -301,6 +302,9 @@ Here are our second week's costumes as well as their physical prototypes:
 
 Like last week, we used a Google Slides presentation to control the lights on the device and to record the interaction using a different phone. However, we also now mimic an intelligent assistant using a person (Viha in this case) to speak through the Zoom call. Here is a quick video of the setup: 
 
+<video width="300" height="600" controls>
+  <source src="interactions/week_2/wizarding.mov" type="video/mp4">
+</video>
 
 ### Prototyped Interactions 
 
