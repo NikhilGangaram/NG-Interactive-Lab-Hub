@@ -154,13 +154,7 @@ Take a little time to set up the wizarding set-up that allows for someone to rem
 
 \*\***Include your first attempts at recording the set-up video here.**\*\*
 
-Our workaround to not being in the same physical space was to use a Google Slides presentation to control the lights on the device and to record the interaction using a different phone. That way, the Zoom room controlling the phone's light could also see how the user was interacting with the device to change the lighting accordingly. While we initially hoped to use Tinkerbelle and all of its features for the lab, we were pleased with the simplicity and results of this approach. 
-
-<video width="300" height="600" controls>
-  <source src="interactions/wizarding.mov" type="video/mp4">
-</video>
-
-Now, change the goal within the same setting, and update the interaction with the paper prototype. 
+Now, hange the goal within the same setting, and update the interaction with the paper prototype. 
 
 \*\***Show the follow-up work here.**\*\*
 
