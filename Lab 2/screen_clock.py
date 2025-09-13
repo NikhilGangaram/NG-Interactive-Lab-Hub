@@ -66,8 +66,7 @@ while True:
 
     #TODO: Lab 2 part D work should be filled in here. You should be able to look in cli_clock.py and stats.py 
     date_time = time.strftime("%m/%d/%Y %H:%M:%S")
-    draw.text((x, y), date_time, font=font, fill="#FFFFFF")
-    y += draw.textbbox((0,0), date_time, font=font)[3]
+    draw.text((x, top), date_time, font=font, fill="#FFFFFF")
 
     # Display image.
     disp.image(image, rotation)
