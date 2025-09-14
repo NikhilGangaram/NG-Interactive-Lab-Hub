@@ -191,6 +191,19 @@ Pro Tip: Using tools like [code-server](https://coder.com/docs/code-server/lates
 ## Part G. 
 ## Sketch and brainstorm further interactions and features you would like for your clock for Part 2.
 
+Here are some sketches and ideas that our team came up with: 
+
+![Sketch 1](images/sketch_1.jpeg "Sketch 1")
+![Sketch 2](images/sketch_2.jpeg "Sketch 2")
+![Sketch 3](images/sketch_3.jpeg "Sketch 3")
+![Storyboard 1](images/storyboard_1.jpeg "Storyboard 1")
+![Storyboard 2](images/storyboard_2.jpeg "Storyboard 2")
+![Storyboard 3](images/storyboard_3.jpeg "Storyboard 3")
+![Storyboard 4](images/storyboard_4.jpeg "Storyboard 4")
+![Storyboard 5](images/storyboard_5.jpeg "Storyboard 5")
+
+We decided to prioritize on exploring the maximum number of manifestation for how to integrate a clock into everyday life and had one interaction for how we thought the clock could be used. 
+
 
 # Prep for Part 2
 
