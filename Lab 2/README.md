@@ -230,8 +230,6 @@ Please sketch/diagram your clock idea. (Try using a [Verplank digram](http://www
 ![Verplank Digram](images/verplank.png "Verplank Digram")
 ![Verplank Grid](images/verplank_grid.png "Verplank Grid")
 
-
-
 **We strongly discourage and will reject the results of literal digital or analog clock display.**
 
 
@@ -251,6 +249,8 @@ Please sketch/diagram your clock idea. (Try using a [Verplank digram](http://www
 <video width="300" height="600" controls>
   <source src="images/demo.mov" type="video/mp4">
 </video>
+
+**Like in previous labs, the video is not playing properly on the Github side. It is there to see in under the images folder and is called demo.mov.**
 
 After you edit and work on the scripts for Lab 2, the files should be upload back to your own GitHub repo! You can push to your personal github repo by adding the files here, commiting and pushing.
 
