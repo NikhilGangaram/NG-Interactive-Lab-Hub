@@ -212,6 +212,8 @@ We decided to prioritize on exploring the maximum number of manifestation for ho
 
 2. Look at and give feedback on the Part G. for at least 2 other people in the class (and get 2 people to comment on your Part G!)
 
+**The primary feedback we got from the class was that the clocks we thought of were integrationg of clocks into everyday objects, as opposed to new interactions for the clock itself. Thus, we pivoted to the seasons clock idea that we've detailed below. (Just wasn't sure where to put this feedback in the report so I put it here.)**
+
 # Lab 2 Part 2
 
 ## Assignment that was formerly Lab 2 Part E.
