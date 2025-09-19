@@ -254,6 +254,8 @@ Please sketch/diagram your clock idea. (Try using a [Verplank digram](http://www
 
 **Like in previous labs, the video is not playing properly on the Github side. It is there to see in under the images folder and is called demo.mov.**
 
+**Also, the tree art came from this link: [Tree Art](https://karboosx.itch.io/seazon-tree)**
+
 After you edit and work on the scripts for Lab 2, the files should be upload back to your own GitHub repo! You can push to your personal github repo by adding the files here, commiting and pushing.
 
 ```
