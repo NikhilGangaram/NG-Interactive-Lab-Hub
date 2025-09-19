@@ -221,18 +221,36 @@ Does time have to be linear?  How do you measure a year? [In daylights? In midni
 
 Can you make time interactive? You can look in `screen_test.py` for examples for how to use the buttons.
 
+**Our idea was to track the passage of seasons. The idea being that the user could control how fast time passes on their clock.**
+
 Please sketch/diagram your clock idea. (Try using a [Verplank digram](http://www.billverplank.com/IxDSketchBook.pdf)!
+
+**We started sketching the idea with a Verplank diagram and gave it to Gemini to help us refine it. Also, I think the link is broken and I used this link instead: [Verplank digram](http://hci.sapp.org/lectures/verplank/interaction/)**
+
+![Verplank Digram](images/verplank.png "Verplank Digram")
+![Verplank Grid](images/verplank_grid.png "Verplank Grid")
+
+
 
 **We strongly discourage and will reject the results of literal digital or analog clock display.**
 
 
 \*\*\***A copy of your code should be in your Lab 2 Github repo.**\*\*\*
 
+**There are two files since we tried two different approaches to this assignment. The first is seasons_clock.py and the second is seasons_clock_bar.py.**
+
+**Please note that AI was not used to help us think of the idea, but it was used to help us refine and generate the sketches above. Also, it was used to help us develop and work through bugs in the code.**
 
 ## Assignment that was formerly Part F. 
 ## Make a short video of your modified barebones PiClock
 
 \*\*\***Take a video of your PiClock.**\*\*\*
+
+**Here is the video:** 
+
+<video width="300" height="600" controls>
+  <source src="images/demo.mov" type="video/mp4">
+</video>
 
 After you edit and work on the scripts for Lab 2, the files should be upload back to your own GitHub repo! You can push to your personal github repo by adding the files here, commiting and pushing.
 
