@@ -1,10 +1,11 @@
 import time
+import subprocess
 import digitalio
 import board
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_rgb_display.st7789 as st7789
 
-# --- Display and Pin Configuration (unchanged from your original code) ---
+# --- Display and Pin Configuration ---
 cs_pin = digitalio.DigitalInOut(board.D5)
 dc_pin = digitalio.DigitalInOut(board.D25)
 reset_pin = None
@@ -23,13 +24,11 @@ disp = st7789.ST7789(
 )
 
 # --- Image Setup ---
-# Get display dimensions
 height = disp.width
 width = disp.height
 rotation = 90
 
 # Pre-load all the season images
-# Make sure your image files are named and located correctly
 seasons = ['fall.png', 'winter.png', 'spring.png', 'summer.png']
 images = []
 for season in seasons:
@@ -47,31 +46,55 @@ for season in seasons:
     
     images.append(new_img)
 
-# --- Backlight and Clock/Date Setup ---
+# --- Backlight, Font, and Button Setup ---
 backlight = digitalio.DigitalInOut(board.D22)
 backlight.switch_to_output()
 backlight.value = True
 
 font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
 
-# --- Main Loop with Image and Season Counter Display ---
+buttonA = digitalio.DigitalInOut(board.D23)
+buttonB = digitalio.DigitalInOut(board.D24)
+buttonA.switch_to_input(pull=digitalio.Pull.UP)
+buttonB.switch_to_input(pull=digitalio.Pull.UP)
+
+# --- Interval Configuration ---
+intervals = [1, 3, 5, 10, 15, 20, 30, 60]
+interval_index = intervals.index(15)  # Start at 15 seconds
+image_change_interval = intervals[interval_index]
+last_button_press_time = time.time()
+button_debounce_time = 0.5
+
+# --- Main Loop with Image, Counter, and Button Handling ---
 image_index = 0
 last_image_change_time = time.time()
-image_change_interval = 10  # seconds
-
-# Initialize a counter for the seasons
 seasons_passed = 0
 
 while True:
     current_time = time.time()
 
-    # Check if it's time to switch the image
+    # Handle button presses with debouncing
+    if not buttonA.value and (current_time - last_button_press_time) > button_debounce_time:
+        # Button A pressed (speed up)
+        interval_index = (interval_index + 1) % len(intervals)
+        image_change_interval = intervals[interval_index]
+        last_button_press_time = current_time
+    
+    if not buttonB.value and (current_time - last_button_press_time) > button_debounce_time:
+        # Button B pressed (slow down)
+        interval_index = (interval_index - 1 + len(intervals)) % len(intervals)
+        image_change_interval = intervals[interval_index]
+        last_button_press_time = current_time
+
+    # Check if it's time to switch the image based on the current interval
     if current_time - last_image_change_time >= image_change_interval:
-        image_index = (image_index + 1) % len(images)  # Cycle to the next image
-        last_image_change_time = current_time  # Reset the timer
-        
-        # Increment the seasons counter each time the image changes
+        image_index = (image_index + 1) % len(images)
+        last_image_change_time = current_time
         seasons_passed += 1
+
+    # Create the text string with the seasons counter
+    seasons_text = f"Seasons Passed: {seasons_passed}"
+    interval_text = f"Interval: {image_change_interval}s"
 
     # Get the current image to display
     current_image = images[image_index]
@@ -80,23 +103,22 @@ while True:
     display_image = current_image.copy()
     draw = ImageDraw.Draw(display_image)
 
-    # Create the text string with the seasons counter
-    seasons_text = f"Seasons: {seasons_passed}"
+    # Calculate text positions
+    bbox_seasons = draw.textbbox((0, 0), seasons_text, font=font)
+    text_width_seasons = bbox_seasons[2] - bbox_seasons[0]
+    text_x_seasons = (width - text_width_seasons) // 2
+    text_y_seasons = height - font.size * 2 - 10 # Position for the seasons count
 
-    # Use textbbox() to get the bounding box of the text
-    bbox = draw.textbbox((0, 0), seasons_text, font=font)
-    text_width = bbox[2] - bbox[0]
-    text_height = bbox[3] - bbox[1]
-
-    # Calculate centered position at the bottom of the screen
-    text_x = (width - text_width) // 2
-    text_y = height - text_height - 5
+    bbox_interval = draw.textbbox((0, 0), interval_text, font=font)
+    text_width_interval = bbox_interval[2] - bbox_interval[0]
+    text_x_interval = (width - text_width_interval) // 2
+    text_y_interval = height - font.size - 5 # Position for the interval
 
     # Draw the text on the image copy
-    draw.text((text_x, text_y), seasons_text, font=font, fill="#FFFFFF")
+    draw.text((text_x_seasons, text_y_seasons), seasons_text, font=font, fill="#FFFFFF")
+    draw.text((text_x_interval, text_y_interval), interval_text, font=font, fill="#FFFFFF")
 
     # Display the final image on the screen
     disp.image(display_image, rotation)
 
-    # Sleep to prevent the loop from running too fast
     time.sleep(0.1)
