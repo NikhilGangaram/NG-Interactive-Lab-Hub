@@ -1,5 +1,5 @@
 # Chatterboxes
-**NAMES OF COLLABORATORS HERE**
+**Sachin Jojode and Viha Srinivas**
 [![Watch the video](https://user-images.githubusercontent.com/1128669/135009222-111fe522-e6ba-46ad-b6dc-d1633d21129c.png)](https://www.youtube.com/embed/Q8FWzLMobx0?start=19)
 
 In this lab, we want you to design interaction with a speech-enabled device--something that listens and talks to you. This device can do anything *but* control lights (since we already did that in Lab 1).  First, we want you first to storyboard what you imagine the conversational interaction to be like. Then, you will use wizarding techniques to elicit examples of what people might say, ask, or respond.  We then want you to use the examples collected from at least two other people to inform the redesign of the device.
@@ -81,6 +81,8 @@ You can also play audio files directly with `aplay filename`. Try typing `aplay 
 
 \*\***Write your own shell file to use your favorite of these TTS engines to have your Pi greet you by name.**\*\*
 (This shell file should be saved to your own repo for this lab.)
+
+**I wrote a script: [custom_greeting.sh](speech-scripts/custom_greeting.sh). I always thought it would be cool to have a custom "Jarvis"-type assistant and liked the festival TTS engine.**
 
 ---
 Bonus:
@@ -214,6 +216,8 @@ answer = ask_ai("How should I greet users?")
 
 \*\***Try creating a simple voice interaction that combines speech recognition, Ollama processing, and text-to-speech output. Document what you built and how users responded to it.**\*\*
 
+**TODO** 
+
 ### Serving Pages
 
 In Lab 1, we served a webpage with flask. In this lab, you may find it useful to serve a webpage for the controller on a remote device. Here is a simple example of a webserver.
@@ -238,9 +242,15 @@ Storyboard and/or use a Verplank diagram to design a speech-enabled device. (Stu
 
 \*\***Post your storyboard and diagram here.**\*\*
 
+**TODO**
+
 Write out what you imagine the dialogue to be. Use cards, post-its, or whatever method helps you develop alternatives or group responses. 
 
 \*\***Please describe and document your process.**\*\*
+
+**My partners and I all agreed to build an interactive device that would function as an interactive therapist. The idea being that since this is all stored locally on the Pi, users would feel comfortable exposing their thoughts and feelings.**
+
+**Our process for prototyping the dialogue was for each of us to develop our own version of the dialogue, and then we would share it with each other. We kind of took a "git merge" approach, where (since we each had similar ideas) we all branched off onto different applications that we thought were important (homesickness, romantic heartbreak, etc.). Then, we merged together the underlying dialogues and acted out the homesickness interaction.**
 
 ### Acting out the dialogue
 
@@ -248,10 +258,30 @@ Find a partner, and *without sharing the script with your partner* try out the d
 
 \*\***Describe if the dialogue seemed different than what you imagined when it was acted out, and how.**\*\*
 
+**One of our partners created the following script to act out the interaction:** 
+
+AI Therapist: Hi, I am your AI Therapist! Feel free to talk to me about any struggles you might be having, situations that you are trying to navigate, and anything else you would like guidance on. All conversations are confidential, so this is a safe place to voice your concerns!
+
+Participant: …
+
+AI Therapist: I understand your concern, it seems that you are currently feeling x, x, and x. Would you like me to be more practical and rational in my response, or would you like me to be a support to you?
+
+Participant: …
+
+AI Therapist: All the emotions you are experiencing are extremely valid. It is normal to feel this way. One recommendation I have is to x, x, or x.
+
+**TODO** add the recording of the interaction 
+
 ### Wizarding with the Pi (optional)
 In the [demo directory](./demo), you will find an example Wizard of Oz project. In that project, you can see how audio and sensor data is streamed from the Pi to a wizard controller that runs in the browser.  You may use this demo code as a template. By running the `app.py` script, you can see how audio and sensor data (Adafruit MPU-6050 6-DoF Accel and Gyro Sensor) is streamed from the Pi to a wizard controller that runs in the browser `http://<YouPiIPAddress>:5000`. You can control what the system says from the controller as well!
 
 \*\***Describe if the dialogue seemed different than what you imagined, or when acted out, when it was wizarded, and how.**\*\*
+
+**Here's what we noted that felt "off" after acting it out:** 
+
+* Without context of the user, the therapist was not able to understand the situation and respond appropriately.
+* From the user's perspective, it's weird to talk to a device that you haven't established a connection with.
+* There's also a fine line between being helpful and being prescriptive, and there are ethical implications to the AI therapist's "telling people what to do". 
 
 # Lab 3 Part 2
 
@@ -260,8 +290,16 @@ For Part 2, you will redesign the interaction with the speech-enabled device usi
 ## Prep for Part 2
 
 1. What are concrete things that could use improvement in the design of your device? For example: wording, timing, anticipation of misunderstandings...
+
+**The main improvement would be wording and shared context about the user's situation. That would make the experience feel "warmer" and more personal. We also think a visual extension would be useful, something that gives the therapist a more personal, visual manifestation.**
+
 2. What are other modes of interaction _beyond speech_ that you might also use to clarify how to interact?
+
+**We answered this above, but we think giving the therapist a visual extension would be useful in anthropomorhizing the system.** 
+
 3. Make a new storyboard, diagram and/or script based on these reflections.
+
+**TODO** new diagram with the context / visual extension
 
 ## Prototype your system
 
@@ -271,6 +309,10 @@ The system should:
 * require participants to speak to it. 
 
 *Document how the system works*
+
+**Context: memories.txt. The idea is that the ollama model should also be given the content from this file whenever it responds to a user's input. This would allow the ollama model to remember the user's previous interactions and personal history without requiring a large vector database or anything else that's heavier in the system.**
+
+**Visual extension: For the purposes of this lab, we chose to have the visual extension be a "rubber duck". Mostly as an homage to how developers would use a rubber duck to debug their code. The idea being that this rubber duck therapist device could help users "debug" their own thoughts and feelings. The hope would be to extend this image to be a talking gif with emotions, however, image generation models are not yet coherent or fast enough to realize this.**
 
 *Include videos or screencaptures of both the system and the controller.*
 
