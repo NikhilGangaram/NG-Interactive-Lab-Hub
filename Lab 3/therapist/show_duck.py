@@ -35,7 +35,7 @@ backlight.value = True
 height = disp.width
 width = disp.height
 rotation = 90
-image_path = 'Lab 3/therapist/duck.png'
+image_path = 'duck.png'
 
 try:
     # 1. Open and convert the image
