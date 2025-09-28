@@ -149,7 +149,7 @@ python faster_whisper_try.py
 ```
 \*\***Write your own shell file that verbally asks for a numerical based input (such as a phone number, zipcode, number of pets, etc) and records the answer the respondent provides.**\*\*
 
-I wrote the script [transcribe_phone_number.sh](speech-scripts/transcribe_phone_number.sh) which uses [Vosk](https://alphacephei.com/vosk/) to transcribe the user's response to a phone number and then uses [espeak](https://espeak.sourceforge.net/) to speak the response. While I chose the phone number use case, I had help from Gemini to help me figure out how to record the answer that the user provides.
+I wrote the script [transcribe_phone_number.sh](speech-scripts/transcribe_phone_number.sh) which uses [Vosk](https://alphacephei.com/vosk/) to transcribe the user's response to a phone number and then uses [espeak](https://espeak.sourceforge.net/) to speak the response. While I chose the phone number use case, I had help from Gemini to help me figure out how to record the answer that the user provides and format the number for the user in the outputted [phone_number_transcription.txt](speech-scripts/phone_number_transcription.txt) file.
 
 ### 🤖 NEW: AI-Powered Conversations with Ollama
 
@@ -218,7 +218,7 @@ answer = ask_ai("How should I greet users?")
 
 \*\***Try creating a simple voice interaction that combines speech recognition, Ollama processing, and text-to-speech output. Document what you built and how users responded to it.**\*\*
 
-For this part of the lab, I chose to build a helpful voice assistant, but I thought it'd be a fun spin to give it some more attitude. I took inspiration from ![Poke](https://poke.com/), an AI assistant that a friend of mine introduced me to and I thought it'd be fun to make my own version. I actually let my friend play around with (I got lucky since I was at home for this lab) this version of the ollama assistant, and besides the latency, he thought it was a lot of fun to play with! My script is in the `ollama_attitude.py` file and I got some help from Gemini when helping iterate on the system prompt.
+For this part of the lab, I chose to build a helpful voice assistant, but I thought it'd be a fun spin to give it some more attitude. I took inspiration from [Poke](https://poke.com/), an AI assistant that a friend of mine introduced me to and I thought it'd be fun to make my own version. I actually let my friend play around with (I got lucky since I was at home for this lab) this version of the ollama assistant, and besides the latency, he thought it was a lot of fun to play with! My script is in the [ollama_attitude.py](ollama_attitude.py) file and I got some help from Gemini when helping iterate on the system prompt.
 
 ### Serving Pages
 
@@ -242,8 +242,6 @@ From a remote browser on the same network, check to make sure your webserver is 
 
 Storyboard and/or use a Verplank diagram to design a speech-enabled device. (Stuck? Make a device that talks for dogs. If that is too stupid, find an application that is better than that.) 
 
-\*\***Post your storyboard and diagram here.**\*\*
-
 Our group did some initial prototyping with Gemini: 
 
 ![Gemini Verplank](therapist/verplank_diagram_gemini.jpeg "Gemini Verplank")
@@ -255,8 +253,6 @@ And then landed on this refined Verplank diagram to guide our process:
 
 Write out what you imagine the dialogue to be. Use cards, post-its, or whatever method helps you develop alternatives or group responses. 
 
-\*\***Please describe and document your process.**\*\*
-
 **My partners and I all agreed to build an interactive device that would function as an interactive therapist. The idea being that since this is all stored locally on the Pi, users would feel comfortable exposing their thoughts and feelings.**
 
 **Our process for prototyping the dialogue was for each of us to develop our own version of the dialogue, and then we would share it with each other. We kind of took a "git merge" approach, where (since we each had similar ideas) we all branched off onto different applications that we thought were important (homesickness, romantic heartbreak, etc.). Then, we merged together the underlying dialogues and acted out the homesickness interaction.**
@@ -264,8 +260,6 @@ Write out what you imagine the dialogue to be. Use cards, post-its, or whatever 
 ### Acting out the dialogue
 
 Find a partner, and *without sharing the script with your partner* try out the dialogue you've designed, where you (as the device designer) act as the device you are designing.  Please record this interaction (for example, using Zoom's record feature).
-
-\*\***Describe if the dialogue seemed different than what you imagined when it was acted out, and how.**\*\*
 
 **One of our partners created the following script to act out the interaction:** 
 
@@ -332,30 +326,13 @@ The system should:
 
 **Visual extension: For the purposes of this lab, we chose to have the visual extension be a "rubber duck". Mostly as an homage to how developers would use a rubber duck to debug their code. The idea being that this rubber duck therapist device could help users "debug" their own thoughts and feelings. The hope would be to extend this image to be a talking gif with emotions, however, image generation models are not yet coherent or fast enough to realize this.**
 
-**Here is the video of our setup:"
+**Here is the video of our setup:** 
+
 <video width="300" height="600" controls>
   <source src="therapist/videos/setup.mov" type="video/mp4">
 </video>
 
-
-TODO: 
-
-<details>
-  <summary><strong>Submission Cleanup Reminder (Click to Expand)</strong></summary>
-  
-  **Before submitting your README.md:**
-  - This readme.md file has a lot of extra text for guidance.
-  - Remove all instructional text and example prompts from this file.
-  - You may either delete these sections or use the toggle/hide feature in VS Code to collapse them for a cleaner look.
-  - Your final submission should be neat, focused on your own work, and easy to read for grading.
-  
-  This helps ensure your README.md is clear professional and uniquely yours!
-</details>
-
 ## Test the system
-Try to get at least two people to interact with your system. (Ideally, you would inform them that there is a wizard _after_ the interaction, but we recognize that can be hard.)
-
-Answer the following:
 
 ### What worked well about the system and what didn't?
 
