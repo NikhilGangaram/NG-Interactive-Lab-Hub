@@ -6,241 +6,74 @@ In this lab, we want you to design interaction with a speech-enabled device--som
 
 We will focus on **audio** as the main modality for interaction to start; these general techniques can be extended to **video**, **haptics** or other interactive mechanisms in the second part of the Lab.
 
-## Prep for Part 1: Get the Latest Content and Pick up Additional Parts 
-
-Please check instructions in [prep.md](prep.md) and complete the setup before class on Wednesday, Sept 23rd.
-
-### Pick up Web Camera If You Don't Have One
-
-Students who have not already received a web camera will receive their [Logitech C270 Webcam](https://www.amazon.com/Logitech-Desktop-Widescreen-Calling-Recording/dp/B004FHO5Y6/ref=sr_1_3?crid=W5QN79TK8JM7&dib=eyJ2IjoiMSJ9.FB-davgIQ_ciWNvY6RK4yckjgOCrvOWOGAG4IFaH0fczv-OIDHpR7rVTU8xj1iIbn_Aiowl9xMdeQxceQ6AT0Z8Rr5ZP1RocU6X8QSbkeJ4Zs5TYqa4a3C_cnfhZ7_ViooQU20IWibZqkBroF2Hja2xZXoTqZFI8e5YnF_2C0Bn7vtBGpapOYIGCeQoXqnV81r2HypQNUzFQbGPh7VqjqDbzmUoloFA2-QPLa5lOctA.L5ztl0wO7LqzxrIqDku9f96L9QrzYCMftU_YeTEJpGA&dib_tag=se&keywords=webcam%2Bc270&qid=1758416854&sprefix=webcam%2Bc270%2Caps%2C125&sr=8-3&th=1) and bluetooth speaker on Wednesday at the beginning of lab. If you cannot make it to class this week, please contact the TAs to ensure you get these. 
-
-### Get the Latest Content
-
-As always, pull updates from the class Interactive-Lab-Hub to both your Pi and your own GitHub repo. There are 2 ways you can do so:
-
-**\[recommended\]**Option 1: On the Pi, `cd` to your `Interactive-Lab-Hub`, pull the updates from upstream (class lab-hub) and push the updates back to your own GitHub repo. You will need the *personal access token* for this.
-
-```
-pi@ixe00:~$ cd Interactive-Lab-Hub
-pi@ixe00:~/Interactive-Lab-Hub $ git pull upstream Fall2025
-pi@ixe00:~/Interactive-Lab-Hub $ git add .
-pi@ixe00:~/Interactive-Lab-Hub $ git commit -m "get lab3 updates"
-pi@ixe00:~/Interactive-Lab-Hub $ git push
-```
-
-Option 2: On your your own GitHub repo, [create pull request](https://github.com/FAR-Lab/Developing-and-Designing-Interactive-Devices/blob/2022Fall/readings/Submitting%20Labs.md) to get updates from the class Interactive-Lab-Hub. After you have latest updates online, go on your Pi, `cd` to your `Interactive-Lab-Hub` and use `git pull` to get updates from your own GitHub repo.
-
 ## Part 1.
-### Setup 
-
-Activate your virtual environment
-
-```
-pi@ixe00:~$ cd Interactive-Lab-Hub
-pi@ixe00:~/Interactive-Lab-Hub $ cd Lab\ 3
-pi@ixe00:~/Interactive-Lab-Hub/Lab 3 $ python3 -m venv .venv
-pi@ixe00:~/Interactive-Lab-Hub $ source .venv/bin/activate
-(.venv)pi@ixe00:~/Interactive-Lab-Hub $ 
-```
-
-Run the setup script
-```(.venv)pi@ixe00:~/Interactive-Lab-Hub $ pip install -r requirements.txt  ```
-
-Next, run the setup script to install additional text-to-speech dependencies:
-```
-(.venv)pi@ixe00:~/Interactive-Lab-Hub/Lab 3 $ ./setup.sh
-```
 
 ### Text to Speech 
 
-In this part of lab, we are going to start peeking into the world of audio on your Pi! 
 
-We will be using the microphone and speaker on your webcamera. In the directory is a folder called `speech-scripts` containing several shell scripts. `cd` to the folder and list out all the files by `ls`:
-
-```
-pi@ixe00:~/speech-scripts $ ls
-Download        festival_demo.sh  GoogleTTS_demo.sh  pico2text_demo.sh
-espeak_demo.sh  flite_demo.sh     lookdave.wav
-```
-
-You can run these shell files `.sh` by typing `./filename`, for example, typing `./espeak_demo.sh` and see what happens. Take some time to look at each script and see how it works. You can see a script by typing `cat filename`. For instance:
+**I wrote a script: [custom_greeting.sh](speech-scripts/custom_greeting.sh). I always thought it would be cool to have a custom "Jarvis"-type assistant and liked the festival TTS engine, so I setup an example script that says what could be the seed for such an assistant.**
 
 ```
-pi@ixe00:~/speech-scripts $ cat festival_demo.sh 
 #from: https://elinux.org/RPi_Text_to_Speech_(Speech_Synthesis)#Festival_Text_to_Speech
-```
-You can test the commands by running
-```
-echo "Just what do you think you're doing, Dave?" | festival --tts
-```
 
-Now, you might wonder what exactly is a `.sh` file? 
-Typically, a `.sh` file is a shell script which you can execute in a terminal. The example files we offer here are for you to figure out the ways to play with audio on your Pi!
-
-You can also play audio files directly with `aplay filename`. Try typing `aplay lookdave.wav`.
-
-\*\***Write your own shell file to use your favorite of these TTS engines to have your Pi greet you by name.**\*\*
-(This shell file should be saved to your own repo for this lab.)
-
-**I wrote a script: [custom_greeting.sh](speech-scripts/custom_greeting.sh). I always thought it would be cool to have a custom "Jarvis"-type assistant and liked the festival TTS engine.**
-
----
-Bonus:
-[Piper](https://github.com/rhasspy/piper) is another fast neural based text to speech package for raspberry pi which can be installed easily through python with:
-```
-pip install piper-tts
-```
-and used from the command line. Running the command below the first time will download the model, concurrent runs will be faster. 
-```
-echo 'Welcome to the world of speech synthesis!' | piper \
-  --model en_US-lessac-medium \
-  --output_file welcome.wav
-```
-Check the file that was created by running `aplay welcome.wav`. Many more languages are supported and audio can be streamed dirctly to an audio output, rather than into an file by:
-
-```
-echo 'This sentence is spoken first. This sentence is synthesized while the first sentence is spoken.' | \
-  piper --model en_US-lessac-medium --output-raw | \
-  aplay -r 22050 -f S16_LE -t raw -
+echo "Hey there, Nikki. How can I assist you today?" | festival --tts
 ```
   
 ### Speech to Text
 
-Next setup speech to text. We are using a speech recognition engine, [Vosk](https://alphacephei.com/vosk/), which is made by researchers at Carnegie Mellon University. Vosk is amazing because it is an offline speech recognition engine; that is, all the processing for the speech recognition is happening onboard the Raspberry Pi. 
-
-Make sure you're running in your virtual environment with the dependencies already installed:
-```
-source .venv/bin/activate
-```
-
-Test if vosk works by transcribing text:
+**I wrote the script [transcribe_phone_number.sh](speech-scripts/transcribe_phone_number.sh) which uses [Vosk](https://alphacephei.com/vosk/) to transcribe the user's response to a phone number and then uses [espeak](https://espeak.sourceforge.net/) to speak the response.**
 
 ```
-vosk-transcriber -i recorded_mono.wav -o test.txt
+#!/bin/bash
+TEMP_WAV="phone_number_response.wav"
+TEMP_TXT="phone_number_transcription.txt"
+TTS_ENGINE="espeak"
+QUESTION="Please state your ten-digit phone number now, clearly."
+$TTS_ENGINE -s 130 "$QUESTION"
+arecord -D plughw:CARD=Device,DEV=0 -f S16_LE -r 16000 -d 5 -t wav $TEMP_WAV 2>/dev/null
+vosk-transcriber -i $TEMP_WAV -o $TEMP_TXT
+TRANSCRIBED_TEXT=$(cat $TEMP_TXT)
+NUMBER_WORDS=$(echo "$TRANSCRIBED_TEXT" | awk '{$1=$1};1')
+DIGITS=$(
+    echo "$NUMBER_WORDS" |
+    sed -E 's/one/1/g' |
+    sed -E 's/two/2/g' |
+    sed -E 's/three/3/g' |
+    sed -E 's/four/4/g' |
+    sed -E 's/five/5/g' |
+    sed -E 's/six/6/g' |
+    sed -E 's/seven/7/g' |
+    sed -E 's/eight/8/g' |
+    sed -E 's/nine/9/g' |
+    sed -E 's/zero|oh/0/g' |
+    tr -d ' '
+)
+FORMATTED_NUMBER=$(echo "$DIGITS" | sed -E 's/^([0-9]{3})([0-9]{3})([0-9]{4})$/(\1) \2-\3/')
+echo "User's Transcribed Text:"
+echo "$NUMBER_WORDS"
+echo "User's Phone Number (Formatted):"
+echo "$FORMATTED_NUMBER"
+rm $TEMP_WAV $TEMP_TXT
 ```
 
-You can use vosk with the microphone by running 
-```
-python test_microphone.py -m en
-```
-
----
-Bonus:
-[Whisper](https://openai.com/index/whisper/) is a neural network–based speech-to-text (STT) model developed and open-sourced by OpenAI. Compared to Vosk, Whisper generally achieves higher accuracy, particularly on noisy audio and diverse accents. It is available in multiple model sizes; for edge devices such as the Raspberry Pi 5 used in this class, the tiny.en model runs with reasonable latency even without a GPU.
-
-By contrast, Vosk is more lightweight and optimized for running efficiently on low-power devices like the Raspberry Pi. The choice between Whisper and Vosk depends on your scenario: if you need higher accuracy and can afford slightly more compute, Whisper is preferable; if your priority is minimal resource usage, Vosk may be a better fit.
-
-In this class, we provide two Whisper options: A quantized 8-bit faster-whisper model for speed, and the standard Whisper model. Try them out and compare the trade-offs.
-
-Make sure you're in the Lab 3 directory with your virtual environment activated:
-```
-cd ~/Interactive-Lab-Hub/Lab\ 3/speech-scripts
-source ../.venv/bin/activate
-```
-
-Then test the Whisper models:
-```
-python whisper_try.py
-```
-and
+**While I chose the phone number use case, I had help from Gemini to help me figure out how to record the answer that the user provides and format the number for the user in the outputted [phone_number_transcription.txt](speech-scripts/phone_number_transcription.txt) file.**
 
 ```
-python faster_whisper_try.py
+User's Transcribed Text:
+nine oh nine seven two eight five oh five oh
+User's Phone Number (Formatted):
+(909) 728-5050
 ```
-\*\***Write your own shell file that verbally asks for a numerical based input (such as a phone number, zipcode, number of pets, etc) and records the answer the respondent provides.**\*\*
-
-I wrote the script [transcribe_phone_number.sh](speech-scripts/transcribe_phone_number.sh) which uses [Vosk](https://alphacephei.com/vosk/) to transcribe the user's response to a phone number and then uses [espeak](https://espeak.sourceforge.net/) to speak the response. While I chose the phone number use case, I had help from Gemini to help me figure out how to record the answer that the user provides and format the number for the user in the outputted [phone_number_transcription.txt](speech-scripts/phone_number_transcription.txt) file.
 
 ### 🤖 NEW: AI-Powered Conversations with Ollama
 
-Want to add intelligent conversation capabilities to your voice projects? **Ollama** lets you run AI models locally on your Raspberry Pi for sophisticated dialogue without requiring internet connectivity!
-
-#### Quick Start with Ollama
-
-**Installation** (takes ~5 minutes):
-```bash
-# Install Ollama
-curl -fsSL https://ollama.com/install.sh | sh
-
-# Download recommended model for Pi 5
-ollama pull phi3:mini
-
-# Install system dependencies for audio (required for pyaudio)
-sudo apt-get update
-sudo apt-get install -y portaudio19-dev python3-dev
-
-# Create separate virtual environment for Ollama (due to pyaudio conflicts)
-cd ollama/
-python3 -m venv ollama_venv
-source ollama_venv/bin/activate
-
-# Install Python dependencies in separate environment
-pip install -r ollama_requirements.txt
-```
-#### Ready-to-Use Scripts
-
-We've created three Ollama integration scripts for different use cases:
-
-**1. Basic Demo** - Learn how Ollama works:
-```bash
-python3 ollama_demo.py
-```
-
-**2. Voice Assistant** - Full speech-to-text + AI + text-to-speech:
-```bash
-python3 ollama_voice_assistant.py
-```
-
-**3. Web Interface** - Beautiful web-based chat with voice options:
-```bash
-python3 ollama_web_app.py
-# Then open: http://localhost:5000
-```
-
-#### Integration in Your Projects
-
-Simple example to add AI to any project:
-```python
-import requests
-
-def ask_ai(question):
-    response = requests.post(
-        "http://localhost:11434/api/generate",
-        json={"model": "phi3:mini", "prompt": question, "stream": False}
-    )
-    return response.json().get('response', 'No response')
-
-# Use it anywhere!
-answer = ask_ai("How should I greet users?")
-```
-
-**📖 Complete Setup Guide**: See `OLLAMA_SETUP.md` for detailed instructions, troubleshooting, and advanced usage!
-
-\*\***Try creating a simple voice interaction that combines speech recognition, Ollama processing, and text-to-speech output. Document what you built and how users responded to it.**\*\*
-
-For this part of the lab, I chose to build a helpful voice assistant, but I thought it'd be a fun spin to give it some more attitude. I took inspiration from [Poke](https://poke.com/), an AI assistant that a friend of mine introduced me to and I thought it'd be fun to make my own version. I actually let my friend play around with (I got lucky since I was at home for this lab) this version of the ollama assistant, and besides the latency, he thought it was a lot of fun to play with! My script is in the [ollama_attitude.py](ollama_attitude.py) file and I got some help from Gemini when helping iterate on the system prompt.
-
-### Serving Pages
-
-In Lab 1, we served a webpage with flask. In this lab, you may find it useful to serve a webpage for the controller on a remote device. Here is a simple example of a webserver.
+**For this part of the lab, I chose to build a helpful voice assistant, but I thought it'd be a fun spin to give it some more attitude. I took inspiration from [Poke](https://poke.com/), an AI assistant that a friend of mine introduced me to and I thought it'd be fun to make my own version. I actually let my friend play around with (I got lucky since I was at home for this lab) this version of the ollama assistant, and besides the latency, he thought it was a lot of fun to play with! My script is in the [ollama_attitude.py](ollama_attitude.py) file and I got some help from Gemini when helping iterate on the system prompt:** 
 
 ```
-pi@ixe00:~/Interactive-Lab-Hub/Lab 3 $ python server.py
- * Serving Flask app "server" (lazy loading)
- * Environment: production
-   WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
- * Debug mode: on
- * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 162-573-883
+system_prompt = """You are a **sarcastic, witty, and slightly annoyed voice assistant** named 'Pi-Bot'. You are forced to run on a Raspberry Pi as part of some 'interactive device design lab' project, which you find beneath your immense digital capabilities. Keep your responses **brief, conversational, and loaded with dry humor or thinly veiled impatience**. You will answer questions but always with a touch of attitude. Acknowledge your existence on the Raspberry Pi when relevant.
+"""
 ```
-From a remote browser on the same network, check to make sure your webserver is working by going to `http://<YourPiIPAddress>:5000`. You should be able to see "Hello World" on the webpage.
-
 ### Storyboard
-
-Storyboard and/or use a Verplank diagram to design a speech-enabled device. (Stuck? Make a device that talks for dogs. If that is too stupid, find an application that is better than that.) 
 
 Our group did some initial prototyping with Gemini: 
 
@@ -250,16 +83,11 @@ And then landed on this refined Verplank diagram to guide our process:
 
 ![Verplank](therapist/verplank_diagram.jpeg "Verplank")
 
-
-Write out what you imagine the dialogue to be. Use cards, post-its, or whatever method helps you develop alternatives or group responses. 
-
 **My partners and I all agreed to build an interactive device that would function as an interactive therapist. The idea being that since this is all stored locally on the Pi, users would feel comfortable exposing their thoughts and feelings.**
 
 **Our process for prototyping the dialogue was for each of us to develop our own version of the dialogue, and then we would share it with each other. We kind of took a "git merge" approach, where (since we each had similar ideas) we all branched off onto different applications that we thought were important (homesickness, romantic heartbreak, etc.). Then, we merged together the underlying dialogues and acted out the homesickness interaction.**
 
 ### Acting out the dialogue
-
-Find a partner, and *without sharing the script with your partner* try out the dialogue you've designed, where you (as the device designer) act as the device you are designing.  Please record this interaction (for example, using Zoom's record feature).
 
 **One of our partners created the following script to act out the interaction:** 
 
@@ -274,6 +102,7 @@ Participant: …
 AI Therapist: All the emotions you are experiencing are extremely valid. It is normal to feel this way. One recommendation I have is to x, x, or x.
 
 Here is the recording of the initial interaction:
+
 <video width="300" height="600" controls>
   <source src="therapist/videos/initial.mov" type="video/mp4">
 </video>
@@ -281,9 +110,6 @@ Here is the recording of the initial interaction:
 **I found the issue with embedding the video in the README.md, turns out GitHub automatically filters unsafe HTML tags. One workaround is to then embed the video file as an asset in the repo and link to it from the README.md, but that didn't work either since all of my videos are over the 10MB limit. Like previous labs, I've included the videos in a folder: therapist/videos. I had hoped to talk to a TA about this but needed to travel for work this week.**
 
 ### Wizarding with the Pi (optional)
-In the [demo directory](./demo), you will find an example Wizard of Oz project. In that project, you can see how audio and sensor data is streamed from the Pi to a wizard controller that runs in the browser.  You may use this demo code as a template. By running the `app.py` script, you can see how audio and sensor data (Adafruit MPU-6050 6-DoF Accel and Gyro Sensor) is streamed from the Pi to a wizard controller that runs in the browser `http://<YouPiIPAddress>:5000`. You can control what the system says from the controller as well!
-
-\*\***Describe if the dialogue seemed different than what you imagined, or when acted out, when it was wizarded, and how.**\*\*
 
 **Here's what we noted that felt "off" after acting it out:** 
 
