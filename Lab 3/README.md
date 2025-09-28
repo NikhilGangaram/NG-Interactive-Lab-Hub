@@ -143,14 +143,11 @@ And then landed on this refined Verplank diagram to guide our process:
 
 ## Prototype your system
 
-The system should:
-* use the Raspberry Pi 
-* use one or more sensors
-* require participants to speak to it. 
+**Improvements to the system:**
 
-**Context: memories.txt. The idea is that the ollama model should also be given the content from this file whenever it responds to a user's input. This would allow the ollama model to remember the user's previous interactions and personal history without requiring a large vector database or anything else that's heavier in the system.**
+Context: memories.txt. The idea is that the ollama model should also be given the content from this file whenever it responds to a user's input. This would allow the ollama model to remember the user's previous interactions and personal history without requiring a large vector database or anything else that's heavier in the system.
 
-**Visual extension: For the purposes of this lab, we chose to have the visual extension be a "rubber duck". Mostly as an homage to how developers would use a rubber duck to debug their code. The idea being that this rubber duck therapist device could help users "debug" their own thoughts and feelings. The hope would be to extend this image to be a talking gif with emotions, however, image generation models are not yet coherent or fast enough to realize this.**
+Visual extension: For the purposes of this lab, we chose to have the visual extension be a "rubber duck". Mostly as an homage to how developers would use a rubber duck to debug their code. The idea being that this rubber duck therapist device could help users "debug" their own thoughts and feelings. The hope would be to extend this image to be a talking gif with emotions, however, image generation models are not yet coherent or fast enough to realize this.
 
 **Here is the video of our setup:** 
 
@@ -159,6 +156,12 @@ The system should:
 </video>
 
 ## Test the system
+
+Here is the video of our interaction: 
+
+<video width="300" height="600" controls>
+  <source src="therapist/videos/interaction.mov" type="video/mp4">
+</video>
 
 ### What worked well about the system and what didn't?
 
@@ -177,6 +180,4 @@ I think there could be some extra tokens encoded into the model. For example, so
 We've already started that in the memories.txt. I think another form would be to store visual features that capture the nuanced reactions users would have to moments in the conversation. However, current models aren't able to understand the nuanced sub-communicative aspects of human communication 
 
 
-
-
-
+**Quick Note:** I've greatly cut down on the amount of "starter text" as mentioned in the readme's instructions. I've only kept what our group had contributed so not sure if I've cut out too much or not.
