@@ -216,7 +216,7 @@ answer = ask_ai("How should I greet users?")
 
 \*\***Try creating a simple voice interaction that combines speech recognition, Ollama processing, and text-to-speech output. Document what you built and how users responded to it.**\*\*
 
-**TODO** 
+For this part of the lab, I chose to build a helpful voice assistant, but I thought it'd be a fun spin to give it some more attitude. I took inspiration from ![Poke](https://poke.com/), an AI assistant that a friend of mine introduced me to and I thought it'd be fun to make my own version. I actually let my friend play around with (I got lucky since I was at home for this lab) this version of the ollama assistant, and besides the latency, he thought it was a lot of fun to play with! My script is in the `ollama_attitude.py` file and I got some help from Gemini when helping iterate on the system prompt.
 
 ### Serving Pages
 
@@ -270,6 +270,13 @@ Participant: …
 
 AI Therapist: All the emotions you are experiencing are extremely valid. It is normal to feel this way. One recommendation I have is to x, x, or x.
 
+Here is the recording of the initial interaction:
+<video width="300" height="600" controls>
+  <source src="therapist/videos/initial.mov" type="video/mp4">
+</video>
+
+**I found the issue with embedding the video in the README.md, turns out GitHub automatically filters unsafe HTML tags. One workaround is to then embed the video file as an asset in the repo and link to it from the README.md, but that didn't work either since all of my videos are over the 10MB limit. Like previous labs, I've included the videos in a folder: therapist/videos. I had hoped to talk to a TA about this but needed to travel for work this week.**
+
 ### Wizarding with the Pi (optional)
 In the [demo directory](./demo), you will find an example Wizard of Oz project. In that project, you can see how audio and sensor data is streamed from the Pi to a wizard controller that runs in the browser.  You may use this demo code as a template. By running the `app.py` script, you can see how audio and sensor data (Adafruit MPU-6050 6-DoF Accel and Gyro Sensor) is streamed from the Pi to a wizard controller that runs in the browser `http://<YouPiIPAddress>:5000`. You can control what the system says from the controller as well!
 
@@ -306,13 +313,17 @@ The system should:
 * use one or more sensors
 * require participants to speak to it. 
 
-*Document how the system works*
-
 **Context: memories.txt. The idea is that the ollama model should also be given the content from this file whenever it responds to a user's input. This would allow the ollama model to remember the user's previous interactions and personal history without requiring a large vector database or anything else that's heavier in the system.**
 
 **Visual extension: For the purposes of this lab, we chose to have the visual extension be a "rubber duck". Mostly as an homage to how developers would use a rubber duck to debug their code. The idea being that this rubber duck therapist device could help users "debug" their own thoughts and feelings. The hope would be to extend this image to be a talking gif with emotions, however, image generation models are not yet coherent or fast enough to realize this.**
 
-*Include videos or screencaptures of both the system and the controller.*
+**Here is the video of our setup:"
+<video width="300" height="600" controls>
+  <source src="therapist/videos/setup.mov" type="video/mp4">
+</video>
+
+
+TODO: 
 
 <details>
   <summary><strong>Submission Cleanup Reminder (Click to Expand)</strong></summary>
@@ -331,22 +342,32 @@ Try to get at least two people to interact with your system. (Ideally, you would
 
 Answer the following:
 
+TODO: 
+
 ### What worked well about the system and what didn't?
 \*\**your answer here*\*\*
+
+I think the memory management fo the user made the experience much more personal 
+
+The static nature of the current setup wasn't conducive to anthropomorphizing the device. I think for the device to truly feel alive, it will need to be animated
 
 ### What worked well about the controller and what didn't?
 
 \*\**your answer here*\*\*
 
+In this case, the controller was "wizarded" using a zoom call instead of going through the device since Sachin and I were on opposite coasts. 
+
 ### What lessons can you take away from the WoZ interactions for designing a more autonomous version of the system?
 
 \*\**your answer here*\*\*
 
+I think the latency of current TTS models makes natural speech intractable. Thus, I believe improvements should be made there 
 
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
 
 \*\**your answer here*\*\*
 
+We've already started that in the memories.txt. I think another form would be to store visual features that capture the nuanced reactions users would have to moments in the conversation. However, current models aren't able to understand the nuanced sub-communicative aspects of human communication 
 
 
 
