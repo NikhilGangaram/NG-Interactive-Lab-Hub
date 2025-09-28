@@ -149,6 +149,8 @@ python faster_whisper_try.py
 ```
 \*\***Write your own shell file that verbally asks for a numerical based input (such as a phone number, zipcode, number of pets, etc) and records the answer the respondent provides.**\*\*
 
+I wrote the script [transcribe_phone_number.sh](speech-scripts/transcribe_phone_number.sh) which uses [Vosk](https://alphacephei.com/vosk/) to transcribe the user's response to a phone number and then uses [espeak](https://espeak.sourceforge.net/) to speak the response. While I chose the phone number use case, I had help from Gemini to help me figure out how to record the answer that the user provides.
+
 ### 🤖 NEW: AI-Powered Conversations with Ollama
 
 Want to add intelligent conversation capabilities to your voice projects? **Ollama** lets you run AI models locally on your Raspberry Pi for sophisticated dialogue without requiring internet connectivity!
@@ -242,7 +244,14 @@ Storyboard and/or use a Verplank diagram to design a speech-enabled device. (Stu
 
 \*\***Post your storyboard and diagram here.**\*\*
 
-**TODO**
+Our group did some initial prototyping with Gemini: 
+
+![Gemini Verplank](therapist/verplank_diagram_gemini.jpeg "Gemini Verplank")
+
+And then landed on this refined Verplank diagram to guide our process: 
+
+![Verplank](therapist/verplank_diagram.jpeg "Verplank")
+
 
 Write out what you imagine the dialogue to be. Use cards, post-its, or whatever method helps you develop alternatives or group responses. 
 
@@ -304,7 +313,13 @@ For Part 2, you will redesign the interaction with the speech-enabled device usi
 
 3. Make a new storyboard, diagram and/or script based on these reflections.
 
-**TODO** new diagram with the context / visual extension
+Like before, our group did some initial prototyping with Gemini: 
+
+![Gemini Verplank](therapist/duck_diagram_gemini.jpeg "Gemini Verplank")
+
+And then landed on this refined Verplank diagram to guide our process: 
+
+![Verplank](therapist/duck_diagram.png "Verplank")
 
 ## Prototype your system
 
@@ -342,30 +357,19 @@ Try to get at least two people to interact with your system. (Ideally, you would
 
 Answer the following:
 
-TODO: 
-
 ### What worked well about the system and what didn't?
-\*\**your answer here*\*\*
 
-I think the memory management fo the user made the experience much more personal 
-
-The static nature of the current setup wasn't conducive to anthropomorphizing the device. I think for the device to truly feel alive, it will need to be animated
+I think the use of stored memories made the conversation feel much more personal. The static nature of the current duck image, however, wasn't conducive to anthropomorphizing the device. I think for the device to truly feel alive, the duck will need to be animated, kind of like a gif that only plays when it's trying to convey something. 
 
 ### What worked well about the controller and what didn't?
 
-\*\**your answer here*\*\*
-
-In this case, the controller was "wizarded" using a zoom call instead of going through the device since Sachin and I were on opposite coasts. 
+In this case, the controller was "wizarded" using a zoom call instead of going through the device since our group was on opposite coasts. I think it could have been improved in terms of making the voice actually sound like the chosen avatar (it'd be cool for it to sound like Donald Duck or Daisy Duck).
 
 ### What lessons can you take away from the WoZ interactions for designing a more autonomous version of the system?
 
-\*\**your answer here*\*\*
-
-I think the latency of current TTS models makes natural speech intractable. Thus, I believe improvements should be made there 
+I think there could be some extra tokens encoded into the model. For example, something like a "sigh" or "hmm" could be used to indicate a pause in the conversation and make it feel more genuine but I haven't seen this kind of behavior from language models yet. 
 
 ### How could you use your system to create a dataset of interaction? What other sensing modalities would make sense to capture?
-
-\*\**your answer here*\*\*
 
 We've already started that in the memories.txt. I think another form would be to store visual features that capture the nuanced reactions users would have to moments in the conversation. However, current models aren't able to understand the nuanced sub-communicative aspects of human communication 
 
