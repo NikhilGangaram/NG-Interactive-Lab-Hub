@@ -121,7 +121,7 @@ def main():
         elif choice == "2":
             voice_response_demo()
         elif choice == "3":
-            response = query_ollama("Say hello and introduce yourself briefly")
+            response = query_ollama("Say hello and introduce yourself briefly", 'qwen2.5:0.5b-instruct')
             print(f"Ollama: {response}")
         elif choice == "4":
             print("Goodbye!")
