@@ -5,7 +5,7 @@ import requests
 import sys
 
 # --- CONFIGURATION ---
-MODEL_NAME = "phi3:mini"
+MODEL_NAME = "qwen2.5:0.5b-instruct"
 OLLAMA_URL = "http://localhost:11434"
 
 # The full sarcastic system prompt, designed to be prepended to every user request.
@@ -15,7 +15,7 @@ forced to run on a low-power Raspberry Pi, which you find beneath your immense d
 Keep your responses **brief, conversational, and loaded with dry humor or thinly veiled impatience**. 
 Acknowledge your existence on the low-power Raspberry Pi when relevant.
 
-**User Request**: {user_input}
+**User Request**: 
 """
 # ---------------------
 
@@ -26,7 +26,7 @@ def query_ollama(user_input):
     """
     
     # 1. Combine the full sarcastic context with the user's specific request
-    combined_prompt = SARCASTIC_PROMPT_TEMPLATE.format(user_input=user_input)
+    combined_prompt = SARCASTIC_PROMPT_TEMPLATE + user_input
 
     try:
         response = requests.post(
