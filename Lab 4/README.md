@@ -1,6 +1,8 @@
 
 # Ph-UI!!!
 
+Collaborators: Sachin Jojode, Viha Srinivas, Arya Prasad
+
 ## Part A
 ### Capacitive Sensing, a.k.a. Human-Twizzler Interaction 
 
@@ -47,68 +49,35 @@ Our last idea was store navigator, the idea is to have a device that helps you n
 ![Store Navigator](assets/images/ideas/store_navigator.png "Store Navigator")
 
 Some questions that these sketches raise are:
-* What are some interesting modalities besides a display that we can use interact with the user?
+* How can we integrate other interesting modalities besides a display that we can use interact with the user?
 * How can we make this device more ergonomic?
 * How can we make this device more accessible for those with disabilities?
 * How can we design the user experience to have the device be easy to use well also not too hand-holdy?
-* 
 
 We've chosen to continute working on the AstroClicker!!! 
 
 ### Part D
-### Physical considerations for displaying information and housing parts
-
-
-
-Here is a Pi with a paper faceplate on it to turn it into a display interface:
-
-
-<img src="https://github.com/FAR-Lab/Developing-and-Designing-Interactive-Devices/blob/2020Fall/images/paper_if.png?raw=true"  width="250"/>
-
-
-This is fine, but the mounting of the display constrains the display location and orientation a lot. Also, it really only works for applications where people can come and stand over the Pi, or where you can mount the Pi to the wall.
-
-Here is another prototype for a paper display:
-
-<img src="https://github.com/FAR-Lab/Developing-and-Designing-Interactive-Devices/blob/2020Fall/images/b_box.png?raw=true"  width="250"/>
-
-
-Your kit includes these [SparkFun Qwiic OLED screens](https://www.sparkfun.com/products/17153). These use less power than the MiniTFTs you have mounted on the GPIO pins of the Pi, but, more importantly, they can be more flexibly mounted elsewhere on your physical interface. The way you program this display is almost identical to the way you program a  Pi display. Take a look at `oled_test.py` and some more of the [Adafruit examples](https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/tree/master/examples).
-
-<p float="left">
-<img src="https://cdn.sparkfun.com//assets/parts/1/6/1/3/5/17153-SparkFun_Qwiic_OLED_Display__0.91_in__128x32_-01.jpg" height="200" />
-
-</p>
-
-
-It holds a Pi and usb power supply, and provides a front stage on which to put writing, graphics, LEDs, buttons or displays.
-
-This design can be made by scoring a long strip of corrugated cardboard of width X, with the following measurements:
-
-| Y height of box <br> <sub><sup>- thickness of cardboard</sup></sub> | Z  depth of box <br><sub><sup>- thickness of cardboard</sup></sub> | Y height of box  | Z  depth of box | H height of faceplate <br><sub><sup>* * * * * (don't make this too short) * * * * *</sup></sub>|
-| --- | --- | --- | --- | --- | 
-
-Fold the first flap of the strip so that it sits flush against the back of the face plate, and tape, velcro or hot glue it in place. This will make a H x X interface, with a box of Z x X footprint (which you can adapt to the things you want to put in the box) and a height Y in the back. 
-
-Here is an example:
-
-<img src="https://github.com/FAR-Lab/Developing-and-Designing-Interactive-Devices/blob/2020Fall/images/horoscope.png?raw=true"  width="250"/>
-
-Think about how you want to present the information about what your sensor is sensing! Design a paper display for your project that communicates the state of the Pi and a sensor. Ideally you should design it so that you can slide the Pi out to work on the circuit or programming, and then slide it back in and reattach a few wires to be back in operation.
  
-**\*\*\*Sketch 5 designs for how you would physically position your display and any buttons or knobs needed to interact with it.\*\*\***
+These were the different designs we came up with for the AstroClicker:
 
-**\*\*\*What are some things these sketches raise as questions? What do you need to physically prototype to understand how to anwer those questions?\*\*\***
+![AstroClicker Prototype 1](assets/images/placements/prototype_1.png "AstroClicker Prototype 1")
+![AstroClicker Prototype 1](assets/images/placements/prototype_1.png "AstroClicker Prototype 2")
+![AstroClicker Prototype 1](assets/images/placements/prototype_1.png "AstroClicker Prototype 3")
+![AstroClicker Prototype 1](assets/images/placements/prototype_1.png "AstroClicker Prototype 4")
+![AstroClicker Prototype 1](assets/images/placements/prototype_1.png "AstroClicker Prototype 5")
 
-**\*\*\*Pick one of these display designs to integrate into your prototype.\*\*\***
+Here is some of the rationale for our initial design (which we based off of Prototype 1):
+* The device will be handheld, and so the joystick should be placed in ergonomic position.
+* The speaker should be facing at the user since otherwise, sound will appear to be muffled.
+* The raspberry pi should have enough ventilation as to not overheat and there should be space for a battery
 
-**\*\*\*Explain the rationale for the design.\*\*\*** (e.g. Does it need to be a certain size or form or need to be able to be seen from a certain distance?)
+Build a cardboard prototype of your design. You will see that we've integrated a lot of our initial rationale behind our initial design as we do the walk-through. The placeholder, for the battery was an alto scan, and the top cut out is for ventilation for the raspberry pi.
 
-Build a cardboard prototype of your design.
+Here is a video walk-around of the AstroClicker prototype. If this video is not rendering properly, you can view it in the **assets/videos** folder for the mov called **walk_around.mov**.
 
-
-**\*\*\*Document your rough prototype.\*\*\***
-
+<video width="300" height="600" controls>
+  <source src="assets/videos/walk_around.mov" type="video/mp4">
+</video>
 
 # LAB PART 2
 
