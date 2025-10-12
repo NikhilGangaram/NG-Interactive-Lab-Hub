@@ -6,6 +6,10 @@ Collaborators: Sachin Jojode, Viha Srinivas, Arya Prasad
 ## Part A
 ### Capacitive Sensing, a.k.a. Human-Twizzler Interaction 
 
+For all sensor testing videos, you can view them in the **Lab 4/assets/videos/sensor_tests** folder. Apologies for the lack of rendering on the GitHub side but they are rendering properly when in VSCode.
+
+Video link: [twizzler.mov](assets/videos/sensor_tests/twizzler.mov)
+
 <video width="300" height="600" controls>
   <source src="assets/videos/sensor_tests/twizzler.mov" type="video/mp4">
 </video>
@@ -14,30 +18,39 @@ Collaborators: Sachin Jojode, Viha Srinivas, Arya Prasad
 
 #### Light/Proximity/Gesture sensor (APDS-9960)
 
+Video link: [color_proximity.mov](assets/videos/sensor_tests/color_proximity.mov)
+
 <video width="300" height="600" controls>
   <source src="assets/videos/sensor_tests/color_proximity.mov" type="video/mp4">
 </video>
+
+Video link: [color_test.mov](assets/videos/sensor_tests/color_test.mov)
 <video width="300" height="600" controls>
   <source src="assets/videos/sensor_tests/color_test.mov" type="video/mp4">
 </video>
+
+Video link: [gesture_test.mov](assets/videos/sensor_tests/gesture_test.mov)
 <video width="300" height="600" controls>
   <source src="assets/videos/sensor_tests/gesture_test.mov" type="video/mp4">
 </video>
 
 #### Rotary Encoder 
 
+Video link: [encoder.mov](assets/videos/sensor_tests/encoder.mov)
 <video width="300" height="600" controls>
   <source src="assets/videos/sensor_tests/encoder.mov" type="video/mp4">
 </video>
 
 #### Joystick 
 
+Video link: [joystick.mov](assets/videos/sensor_tests/joystick.mov)
 <video width="300" height="600" controls>
   <source src="assets/videos/sensor_tests/joystick.mov" type="video/mp4">
 </video>
 
 #### Distance Sensor
 
+Video link: [proximity.mov](assets/videos/sensor_tests/proximity.mov)
 <video width="300" height="600" controls>
   <source src="assets/videos/sensor_tests/proximity.mov" type="video/mp4">
 </video>
