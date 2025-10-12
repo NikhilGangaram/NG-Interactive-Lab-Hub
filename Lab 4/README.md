@@ -6,24 +6,41 @@ Collaborators: Sachin Jojode, Viha Srinivas, Arya Prasad
 ## Part A
 ### Capacitive Sensing, a.k.a. Human-Twizzler Interaction 
 
-
+<video width="300" height="600" controls>
+  <source src="assets/videos/sensor_tests/twizzler.mov" type="video/mp4">
+</video>
 
 ### Part B
 
 #### Light/Proximity/Gesture sensor (APDS-9960)
 
-
+<video width="300" height="600" controls>
+  <source src="assets/videos/sensor_tests/color_proximity.mov" type="video/mp4">
+</video>
+<video width="300" height="600" controls>
+  <source src="assets/videos/sensor_tests/color_test.mov" type="video/mp4">
+</video>
+<video width="300" height="600" controls>
+  <source src="assets/videos/sensor_tests/gesture_test.mov" type="video/mp4">
+</video>
 
 #### Rotary Encoder 
 
+<video width="300" height="600" controls>
+  <source src="assets/videos/sensor_tests/encoder.mov" type="video/mp4">
+</video>
 
 #### Joystick 
 
-
-
+<video width="300" height="600" controls>
+  <source src="assets/videos/sensor_tests/joystick.mov" type="video/mp4">
+</video>
 
 #### Distance Sensor
 
+<video width="300" height="600" controls>
+  <source src="assets/videos/sensor_tests/proximity.mov" type="video/mp4">
+</video>
 
 ### Part C
 ### Physical considerations for sensing
