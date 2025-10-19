@@ -190,9 +190,13 @@ Most of these considerations are identical to the cardboard prototype, but we di
 
 Here are our two final videos with a walkthrough of the AstroClicker prototype in both software and hardware:
 
+Video link: [software.mov](assets/videos/software.mov)
+
 <video width="300" height="600" controls>
   <source src="assets/videos/software.mov" type="video/mp4">
 </video>
+
+Video link: [hardware.mov](assets/videos/hardware.mov)
 
 <video width="300" height="600" controls>
   <source src="assets/videos/hardware.mov" type="video/mp4">
