@@ -115,8 +115,6 @@ Here is a video walk-around of the AstroClicker prototype. If this video is not 
 
 Following exploration and reflection from Part 1, complete the "looks like," "works like" and "acts like" prototypes for your design, reiterated below.
 
-
-
 ### Part E
 
 #### Software
@@ -200,3 +198,11 @@ Here are our two final videos with a walkthrough of the AstroClicker prototype i
   <source src="assets/videos/hardware.mov" type="video/mp4">
 </video>
 
+### AI Contributions 
+
+Throughout this lab, we got help from Gemini with: 
+
+* Generating "final" images throughout the lab. We would often sketch a rough idea on paper, and then use Gemini to refine it into a presentable image. 
+* Developing and documenting the code for the AstroClicker prototype.
+
+Everything else (ideating, eliciting feedback, designing and building the prototypes) was done by ourselves.
