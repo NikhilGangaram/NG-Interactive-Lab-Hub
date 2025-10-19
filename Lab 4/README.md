@@ -154,10 +154,10 @@ We first started prototyping the software for the AstroClicker prototype, which 
 | Input Action | Resulting Action | Output/Narration |
 | :--- | :--- | :--- |
 | **Joystick Button Click (Release)** | Stays at current target. | Reads the **`name`** and **`fact`** of the current target, followed by a prompt for the next action. |
-| **Joystick Up** ($\text{y\_val} > 600$) | Calls `navigator.move('up')` (Zoom Out/Farther). | Announces the zoom-out and the new target's name/type, or a boundary message. |
-| **Joystick Down** ($\text{y\_val} < 400$) | Calls `navigator.move('down')` (Zoom In/Closer). | Announces the zoom-in and the new target's name/type, or a boundary message. |
-| **Joystick Left** ($\text{x\_val} > 600$) | Calls `navigator.move('left')` (Scan/New Target). | Announces a scan left and the new target's name/type. |
-| **Joystick Right** ($\text{x\_val} < 400$) | Calls `navigator.move('right')` (Scan/New Target). | Announces a scan right and the new target's name/type. |
+| **Joystick Up** (Y-Value > 600) | Calls `navigator.move('up')` (Zoom Out/Farther). | Announces the zoom-out and the new target's name/type, or a boundary message. |
+| **Joystick Down** (Y-Value < 400) | Calls `navigator.move('down')` (Zoom In/Closer). | Announces the zoom-in and the new target's name/type, or a boundary message. |
+| **Joystick Left** (X-Value > 600) | Calls `navigator.move('left')` (Scan/New Target). | Announces a scan left and the new target's name/type. |
+| **Joystick Right** (X-Value < 400) | Calls `navigator.move('right')` (Scan/New Target). | Announces a scan right and the new target's name/type. |
 
 ---
 
