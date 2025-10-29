@@ -103,11 +103,7 @@ AI Therapist: All the emotions you are experiencing are extremely valid. It is n
 
 Here is the recording of the initial interaction:
 
-[Video Link](therapist/videos/initial.mov)
-
-<video width="300" height="600" controls>
-  <source src="therapist/videos/initial.mov" type="video/mp4">
-</video>
+[Video Link](https://youtu.be/vX0yXSxaXyY). (2:23 - 4:03)
 
 **I found the issue with embedding the video in the README.md, turns out GitHub automatically filters unsafe HTML tags. One workaround is to then embed the video file as an asset in the repo and link to it from the README.md, but that didn't work either since all of my videos are over the 10MB limit. Like previous labs, I've included the videos in a folder: therapist/videos. I had hoped to talk to a TA about this but needed to travel for work this week.**
 
@@ -153,21 +149,13 @@ Visual extension: For the purposes of this lab, we chose to have the visual exte
 
 **Here is the video of our setup:** 
 
-[Video Link](therapist/videos/setup.mov)
-
-<video width="300" height="600" controls>
-  <source src="therapist/videos/setup.mov" type="video/mp4">
-</video>
+[Video Link](https://youtu.be/vX0yXSxaXyY). (4:03 - END)
 
 ## Test the system
 
 Here is the video of our interaction: 
 
-[Video Link](therapist/videos/interaction.mov)
-
-<video width="300" height="600" controls>
-  <source src="therapist/videos/interaction.mov" type="video/mp4">
-</video>
+[Video Link](https://youtu.be/vX0yXSxaXyY). (0 - 2:23)
 
 ### What worked well about the system and what didn't?
 
