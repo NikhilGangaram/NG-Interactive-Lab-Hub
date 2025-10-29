@@ -78,7 +78,7 @@ Build a cardboard prototype of your design. You will see that we've integrated a
 
 Here is a video walk-around of the AstroClicker prototype. If this video is not rendering properly, you can view it in the **assets/videos** folder for the mov called **walk_around.mov**.
 
-[Video Link](https://youtube.com/shorts/sQySwPO-nW0?feature=share).
+Video Link : [walk_around.mov](https://youtube.com/shorts/sQySwPO-nW0?feature=share).
 
 # LAB PART 2
 
