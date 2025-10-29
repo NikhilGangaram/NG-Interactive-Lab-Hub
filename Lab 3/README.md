@@ -103,6 +103,8 @@ AI Therapist: All the emotions you are experiencing are extremely valid. It is n
 
 Here is the recording of the initial interaction:
 
+[Video Link](therapist/videos/initial.mov)
+
 <video width="300" height="600" controls>
   <source src="therapist/videos/initial.mov" type="video/mp4">
 </video>
@@ -151,6 +153,8 @@ Visual extension: For the purposes of this lab, we chose to have the visual exte
 
 **Here is the video of our setup:** 
 
+[Video Link](therapist/videos/setup.mov)
+
 <video width="300" height="600" controls>
   <source src="therapist/videos/setup.mov" type="video/mp4">
 </video>
@@ -158,6 +162,8 @@ Visual extension: For the purposes of this lab, we chose to have the visual exte
 ## Test the system
 
 Here is the video of our interaction: 
+
+[Video Link](therapist/videos/interaction.mov)
 
 <video width="300" height="600" controls>
   <source src="therapist/videos/interaction.mov" type="video/mp4">
