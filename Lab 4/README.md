@@ -8,52 +8,25 @@ Collaborators: Sachin Jojode, Viha Srinivas, Arya Prasad
 
 For all sensor testing videos, you can view them in the **Lab 4/assets/videos/sensor_tests** folder. Apologies for the lack of rendering on the GitHub side but they are rendering properly when in VSCode.
 
-Video link: [twizzler.mov](assets/videos/sensor_tests/twizzler.mov)
-
-<video width="300" height="600" controls>
-  <source src="assets/videos/sensor_tests/twizzler.mov" type="video/mp4">
-</video>
+Video link: [twizzler.mov](https://www.youtube.com/watch?v=UR29FbM2_Zg)
 
 ### Part B
 
 #### Light/Proximity/Gesture sensor (APDS-9960)
 
-Video link: [color_proximity.mov](assets/videos/sensor_tests/color_proximity.mov)
-
-<video width="300" height="600" controls>
-  <source src="assets/videos/sensor_tests/color_proximity.mov" type="video/mp4">
-</video>
-
-Video link: [color_test.mov](assets/videos/sensor_tests/color_test.mov)
-<video width="300" height="600" controls>
-  <source src="assets/videos/sensor_tests/color_test.mov" type="video/mp4">
-</video>
-
-Video link: [gesture_test.mov](assets/videos/sensor_tests/gesture_test.mov)
-<video width="300" height="600" controls>
-  <source src="assets/videos/sensor_tests/gesture_test.mov" type="video/mp4">
-</video>
+Video link: [sensors.mov](https://www.youtube.com/watch?v=EVjcOtlsp9w)
 
 #### Rotary Encoder 
 
-Video link: [encoder.mov](assets/videos/sensor_tests/encoder.mov)
-<video width="300" height="600" controls>
-  <source src="assets/videos/sensor_tests/encoder.mov" type="video/mp4">
-</video>
+Video link: [encoder.mov](https://www.youtube.com/watch?v=T9menfbH3-I)
 
 #### Joystick 
 
-Video link: [joystick.mov](assets/videos/sensor_tests/joystick.mov)
-<video width="300" height="600" controls>
-  <source src="assets/videos/sensor_tests/joystick.mov" type="video/mp4">
-</video>
+Video link: [joystick.mov](https://www.youtube.com/watch?v=TCmgt5xkJVs)
 
 #### Distance Sensor
 
-Video link: [proximity.mov](assets/videos/sensor_tests/proximity.mov)
-<video width="300" height="600" controls>
-  <source src="assets/videos/sensor_tests/proximity.mov" type="video/mp4">
-</video>
+Video link: [proximity.mov](https://www.youtube.com/watch?v=fr77xgzWXX8)
 
 ### Part C
 ### Physical considerations for sensing
@@ -105,9 +78,7 @@ Build a cardboard prototype of your design. You will see that we've integrated a
 
 Here is a video walk-around of the AstroClicker prototype. If this video is not rendering properly, you can view it in the **assets/videos** folder for the mov called **walk_around.mov**.
 
-<video width="300" height="600" controls>
-  <source src="assets/videos/walk_around.mov" type="video/mp4">
-</video>
+[Video Link](https://youtube.com/shorts/sQySwPO-nW0?feature=share).
 
 # LAB PART 2
 
@@ -190,17 +161,7 @@ Most of these considerations are identical to the cardboard prototype, but we di
 
 Here are our two final videos with a walkthrough of the AstroClicker prototype in both software and hardware:
 
-Video link: [software.mov](assets/videos/software.mov)
-
-<video width="300" height="600" controls>
-  <source src="assets/videos/software.mov" type="video/mp4">
-</video>
-
-Video link: [hardware.mov](assets/videos/hardware.mov)
-
-<video width="300" height="600" controls>
-  <source src="assets/videos/hardware.mov" type="video/mp4">
-</video>
+Video link: [prototype.mov](https://youtu.be/bRyzQZdn2rA)
 
 ### AI Contributions 
 
