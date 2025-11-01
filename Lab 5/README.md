@@ -36,7 +36,7 @@ After testing our prototype, we found that lighting conditions and the relative 
 
 In this case, we found that there is already implicit frustration when trying to learn a new language. Thus, if the system ever said anything wrong, there is an immediate loss of user trust. In experimenting with other platforms, we came across [Google AI Live](https://aistudio.google.com/live) which performed much better than our initial prototype. The reason for this seems to be that they feed in the video of the user as opposed to a single frame. We believe this is a more natural way to capture the interaction from the user and will be exploring this in the second part of the lab. However, even Google's model struggled with longer videos and conversations where it assumes everything the user does is correct: 
 
-Video link: [google_ai_live.mov](assets/videos/google_ai_live.mov)
+Video link: [google_ai_live.mov](https://youtu.be/puvYo5_OJCY)
 
 
 ### Part D

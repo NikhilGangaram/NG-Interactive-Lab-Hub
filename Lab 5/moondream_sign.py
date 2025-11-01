@@ -1,215 +1,292 @@
-#!/usr/bin/env -S /home/pi/Interactive-Lab-Hub/Lab\ 3/.venv/bin/python
+import base64
+import ollama
+from PIL import Image
+from io import BytesIO
+import cv2  
+import time 
+import os   
+import subprocess 
+import argparse 
+import queue      
+import sys        
+import sounddevice as sd 
+import requests   
+import json       
+from vosk import Model, KaldiRecognizer 
 
-# --------------------------------------------------------------------------------------
-# HELPFUL VISION TUTOR (VOSK/LLM/MOONDREAM/ESPEAK TTS)
-# The core loop: STT -> Capture -> Vision -> LLM Feedback -> TTS
-# --------------------------------------------------------------------------------------
+# --- VOSK STT CONFIGURATION ---
+q = queue.Queue()
+# Note: Vosk transcribes to lowercase, so all command checks use lowercase.
+WAKE_COMMAND_PHRASES = ["check my sign", "what about now"] 
 
-import argparse, queue, sys, json, time, base64, os
-import sounddevice as sd
-import requests
-import cv2
-import subprocess
-# Vosk is assumed to be installed in the venv and uses KaldiRecognizer and Model
-# from the vosk module (not explicitly shown in the provided imports)
+# --- STT Command Keywords for Forgiveness ---
+# Triggers the capture and feedback process if found in the transcribed speech
+INITIAL_KEYWORDS = ["check", "sign"]
+REPEAT_KEYWORD = "now"
+EXIT_KEYWORDS = ['quit', 'exit', 'shut down']
 
-# --- CONFIGURATION ---
-class Config:
-    # Ollama Models & API
-    OLLAMA_URL = "http://localhost:11434"
-    LLM_MODEL_NAME = "qwen2.5:0.5b-instruct" 
-    MOONDREAM_MODEL_NAME = "moondream:latest"
-    # Prompts & Commands
-    VISION_PROMPT = "Strictly classify the gesture made by the hand in this image. Is it a thumbs up, a peace sign, a pointing finger, or another recognizable sign? Only output the classification."
-    TUTOR_SYSTEM_PROMPT = "**ALWAYS RESPOND WITH A HELPFUL, ENCOURAGING, AND TUTORIAL ATTITUDE.** You are a sign language tutor, here to help the user practice and learn new signs. Keep your responses **brief, conversational, and positive**. Acknowledge the effort, provide feedback based on the classification, and suggest the next step.\n\n**Vision Model Classification**:\n"
-    VISION_COMMANDS = ['show me', 'check my sign', 'ready', 'test me', 'capture']
-    EXIT_COMMANDS = ['quit', 'exit', 'shut down', 'log off', 'stop listening']
-    # Other Settings
-    CAMERA_INDEX = 0
-    IMAGE_FILENAME = "gesture_capture.jpg"
-    AUDIO_QUEUE = queue.Queue()
+# --- Global Output Mode Control ---
+OUTPUT_MODE = 'speaker' 
 
-# --- HELPER UTILITIES ---
+# --- VISION & OLLAMA CONFIGURATION ---
+IMAGE_PATH = "captured_image.jpg" 
+MODEL_NAME = "moondream:1.8b" 
+PROMPT = "You are a sign language expert. Analyze the sign language hand shape, position, and movement in this image. Provide constructive and encouraging feedback to the user on how to improve the sign."
+OLLAMA_URL = "http://localhost:11434"
+# -------------------------------------
 
-@staticmethod
-def speak_text(text):
-    """Simple text-to-speech using espeak and console logging."""
-    clean_text = text.encode('ascii', 'ignore').decode('ascii')
-    print(f"Tutor Bot: {clean_text}")
-    try:
-        subprocess.run(['espeak', f'"{clean_text}"'], check=False)
-    except FileNotFoundError:
-        print("TTS Error: 'espeak' not found. Install with: sudo apt install espeak.")
+# --- Helper Functions ---
 
-@staticmethod
 def int_or_str(text):
-    """For argument parsing."""
-    try: return int(text)
-    except ValueError: return text
+    """Helper function for argument parsing."""
+    try:
+        return int(text)
+    except ValueError:
+        return text
 
-@staticmethod
 def callback(indata, frames, time, status):
-    """Callback for sounddevice RawInputStream."""
-    if status: print(status, file=sys.stderr)
-    Config.AUDIO_QUEUE.put(bytes(indata))
+    """This is called (from a separate thread) for each audio block."""
+    if status:
+        print(status, file=sys.stderr)
+    q.put(bytes(indata))
 
-# --- VISION & LLM FUNCTIONS ---
+def speak_text(text: str):
+    """
+    Simple text-to-speech using espeak.
+    """
+    global OUTPUT_MODE 
+    clean_text = text.encode('ascii', 'ignore').decode('ascii')
+    print(f"Assistant: {clean_text}")
 
-@staticmethod
-def capture_image():
-    """Captures and saves a single image from the webcam."""
-    print("Camera: Please hold your gesture steady...")
-    cap = cv2.VideoCapture(Config.CAMERA_INDEX)
+    if OUTPUT_MODE == 'speaker':
+        subprocess.run(['espeak', f'"{clean_text}"'], shell=True, check=False)
+
+def capture_image(filename: str) -> str | None:
+    """
+    Capture image from webcam using OpenCV (Robust Version).
+    Includes warm-up and buffer flush for reliable capture.
+    """
+    speak_text("Opening camera...")
+    
+    # Open webcam
+    cap = cv2.VideoCapture(0)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
     
     if not cap.isOpened():
-        print("Camera: Error: Could not open camera.")
+        speak_text("Error: Could not open camera")
         return None
     
-    # Allow camera to warm up and adjust
-    time.sleep(0.5)
-    for _ in range(15): cap.read()
+    speak_text("Camera warming up...")
+    
+    # 1. Wait for warm up (2 seconds)
+    time.sleep(2)
+    
+    # 2. Flush 30 frames for proper exposure
+    for _ in range(30):
+        cap.read()
+    
+    # Capture frame with countdown
+    speak_text("Smile! Capturing in 3...")
+    time.sleep(1)
+    speak_text("2...")
+    time.sleep(1)
+    speak_text("1...")
+    time.sleep(1)
+    speak_text("**CLICK**")
     
     ret, frame = cap.read()
     cap.release()
     
     if not ret:
-        print("Camera: Error: Could not capture image.")
+        speak_text("Error: Could not capture image")
         return None
     
-    cv2.imwrite(Config.IMAGE_FILENAME, frame)
-    return Config.IMAGE_FILENAME
+    # Save image to the specified filename
+    cv2.imwrite(filename, frame)
+    speak_text(f"Image saved as: {filename}")
+    return filename
 
-@staticmethod
-def run_ollama_vision(image_path):
-    """Sends image to Moondream for classification."""
+
+def encode_image_to_base64(image_path: str) -> str | None:
+    """Reads an image file, converts it to JPEG, and returns the Base64 string."""
     try:
-        with open(image_path, 'rb') as f:
-            image_data = base64.b64encode(f.read()).decode('utf-8')
+        img = Image.open(image_path)
+        buffered = BytesIO()
+        if img.mode == 'RGBA':
+            img = img.convert('RGB')
+        img.save(buffered, format="JPEG")
+        return base64.b64encode(buffered.getvalue()).decode('utf-8')
+    except FileNotFoundError:
+        speak_text(f"Error: Image file not found at '{image_path}'.")
+        return None
     except Exception as e:
-        return f"Moondream Error: Could not read image file. {e}"
+        speak_text(f"An error occurred during image processing: {e}")
+        return None
 
-    try:
-        response = requests.post(
-            f"{Config.OLLAMA_URL}/api/generate",
-            json={
-                "model": Config.MOONDREAM_MODEL_NAME,
-                "prompt": Config.VISION_PROMPT,
-                "images": [image_data],
-                "stream": False 
-            }, timeout=120)
-        
-        return response.json().get('response', 'Moondream: Failed to classify gesture.').strip() \
-               if response.status_code == 200 \
-               else f"Moondream Error: API status {response.status_code}."
-    except requests.exceptions.Timeout:
-        return "Moondream: Timed out. Please try again."
-    except Exception as e:
-        return f"Moondream Error: Communication error: {e}"
-
-@staticmethod
-def get_llm_feedback(classification):
-    """Sends classification to the LLM for helpful feedback."""
-    prompt = Config.TUTOR_SYSTEM_PROMPT + classification
-    try:
-        response = requests.post(
-            f"{Config.OLLAMA_URL}/api/generate",
-            json={
-                "model": Config.LLM_MODEL_NAME,
-                "prompt": prompt,
-                "stream": False
-            }, timeout=90)
-        
-        return response.json().get('response', 'I was unable to generate feedback. Let\'s try again.') \
-               if response.status_code == 200 \
-               else f"Error: Ollama API status {response.status_code}. Please check your Ollama server."
+def process_and_feedback(image_path: str):
+    """Encodes image, calls Ollama, and delivers feedback."""
+    speak_text("Processing image and requesting feedback from the model.")
     
-    except requests.exceptions.Timeout:
-        return "The server timed out while thinking. Let's try that gesture one more time."
-    except Exception as e:
-        return f"Error communicating with the Tutor model: {e}."
+    # 1. Read and encode the captured image
+    base64_image = encode_image_to_base64(image_path)
 
+    if base64_image:
+        # 2. Use Ollama to get the description and speak the final feedback
+        speak_text(f"Generating feedback with {MODEL_NAME}...")
+        try:
+            stream = ollama.chat(
+                model=MODEL_NAME,
+                messages=[
+                    {
+                        "role": "user",
+                        "content": PROMPT,
+                        "images": [base64_image], 
+                    }
+                ],
+                stream=True,
+            )
 
-# --- MAIN EXECUTION ---
-
-def run_tutor_bot():
-    """Initializes all systems and runs the continuous voice command loop."""
-    parser = argparse.ArgumentParser(description="Helpful Vision Tutor (Vosk + Ollama + Moondream)")
-    parser.add_argument("-l", "--list-devices", action="store_true", help="show list of audio devices and exit")
-    parser.add_argument("-d", "--device", type=int_or_str, help="input device (numeric ID or substring)")
-    parser.add_argument("-r", "--samplerate", type=int, help="sampling rate")
-    parser.add_argument("-m", "--model", type=str, default="en-us", help="Vosk language model; default is en-us")
-    args, _ = parser.parse_known_args()
-
-    if args.list_devices:
-        print(sd.query_devices()); sys.exit(0)
-        
-    try:
-        # 1. Ollama Check
-        if requests.get(f"{Config.OLLAMA_URL}/api/tags", timeout=5).status_code != 200:
-            print(f"Error: Cannot connect to Ollama. Is 'ollama serve' running?")
-            sys.exit(1)
+            full_response = ""
+            print("\n--- Model Feedback ---")
+            for chunk in stream:
+                content = chunk["message"]["content"]
+                print(content, end="", flush=True)
+                full_response += content
+                
+            print("\n--- End of Feedback ---")
             
-        # 2. Vosk Setup
+            # Speak the final response
+            speak_text("Here is the sign language feedback:")
+            speak_text(full_response.strip())
+            
+            return full_response
+            
+        except ollama.ResponseError as e:
+            speak_text(f"Ollama Error: {e}")
+            speak_text("Hint: Please ensure you have pulled the model and your Ollama server is running.")
+        except Exception as e:
+            speak_text(f"An unexpected error occurred: {e}")
+            
+# ----------------------------------------------------------------------
+
+
+def main():
+    """Main execution function with argument parsing and the STT loop."""
+    
+    # --- 1. ARGUMENT PARSING & AUDIO DEVICE CHECK ---
+    parser = argparse.ArgumentParser(
+        description="Voice-Activated Sign Language Feedback Tool.",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument('-d', "--device", type=int_or_str, help="input device (numeric ID or substring)")
+    parser.add_argument('-r', "--samplerate", type=int, help="sampling rate")
+    parser.add_argument('-m', "--model", type=str, default="en-us", help="Vosk language model; default is en-us")
+    parser.add_argument(
+        '--mode', type=str, choices=['speaker', 'silent'], default='speaker',
+        help="Set the output mode. 'speaker' (default) uses text-to-speech (espeak). 'silent' uses print() only.")
+    
+    args = parser.parse_args()
+    
+    # Set the global mode variable based on the argument
+    global OUTPUT_MODE
+    OUTPUT_MODE = args.mode 
+    
+    try:
+        # --- 2. VOSK & AUDIO SETUP ---
         if args.samplerate is None:
             device_info = sd.query_devices(args.device, "input")
             args.samplerate = int(device_info["default_samplerate"])
             
-        # NOTE: Model and KaldiRecognizer classes are expected to be available from the environment.
-        from vosk import Model, KaldiRecognizer
+        speak_text(f"Loading Vosk model: {args.model}...")
         model = Model(lang=args.model)
-        rec = KaldiRecognizer(model, args.samplerate)
 
-        # 3. Main Loop
+        # --- 3. OLLAMA STATUS CHECK ---
+        speak_text(f"Checking Ollama status at {OLLAMA_URL}...")
+        try:
+            if requests.get(f"{OLLAMA_URL}/api/tags", timeout=5).status_code != 200:
+                speak_text("Error: Cannot connect to Ollama. Is 'ollama serve' running?")
+                sys.exit(1)
+        except Exception:
+            speak_text("Error: Cannot connect to Ollama. Is 'ollama serve' running?")
+            sys.exit(1)
+            
+        # --- 4. MAIN STT LOOP ---
         with sd.RawInputStream(samplerate=args.samplerate, blocksize=8000, device=args.device,
                 dtype="int16", channels=1, callback=callback):
             
-            print(f"\n{'='*70}")
-            speak_text("Welcome! I'm ready to check your gesture. Say 'show me' or 'check my sign'.")
-            print("Press Ctrl+C to exit.")
-            print(f"{'='*70}")
+            speak_text(f"\n{'='*70}")
+            speak_text(f"Sign Bot Online. Listening for 'check my sign' or 'what about now'...")
+            speak_text("Press Ctrl+C to exit.")
+            speak_text(f"{'='*70}")
+            
+            rec = KaldiRecognizer(model, args.samplerate)
             
             while True:
-                data = Config.AUDIO_QUEUE.get()
+                data = q.get()
+                
                 if rec.AcceptWaveform(data):
-                    user_input = json.loads(rec.Result()).get('text', '').strip().lower()
+                    result_json = json.loads(rec.Result())
+                    user_input = result_json.get('text', '').strip()
                     
-                    if not user_input:
-                        rec.Reset()
-                        continue
-
-                    print(f"\nUser: {user_input}")
-
-                    # Command Logic
-                    if any(cmd in user_input for cmd in Config.VISION_COMMANDS):
-                        speak_text("Excellent! Hold your gesture steady now.")
-                        image_path = capture_image()
+                    if user_input:
+                        print(f"User heard: {user_input}")
                         
-                        if image_path:
-                            print("Tutor Bot: Analyzing...")
-                            classification = run_ollama_vision(image_path)
-                            feedback = get_llm_feedback(classification)
-                            speak_text(feedback)
+                        # Normalize input for command checking (Vosk is always lowercase)
+                        user_input_norm = user_input.lower()
+                        
+                        # --- WAKE/TRIGGER COMMAND CHECK (Forgiving Keyword Match) ---
+                        
+                        # Check for 'check my sign' (contains 'check' OR 'sign')
+                        if any(k in user_input_norm for k in INITIAL_KEYWORDS):
+                            
+                            speak_text("Initial command received. Preparing for capture...")
+                            
+                            # 1. Capture the image
+                            captured_file = capture_image(IMAGE_PATH)
+
+                            if captured_file:
+                                # 2. Process and give feedback
+                                process_and_feedback(captured_file)
+
+                            speak_text("\nReady for the next sign. Say 'what about now' or 'check my sign'.")
+
+                        # Check for 'what about now' (contains 'now')
+                        elif REPEAT_KEYWORD in user_input_norm:
+                            
+                            speak_text("Repeat command received. Preparing for capture...")
+                            
+                            # 1. Capture the image
+                            captured_file = capture_image(IMAGE_PATH)
+
+                            if captured_file:
+                                # 2. Process and give feedback
+                                process_and_feedback(captured_file)
+
+                            speak_text("\nReady for the next sign. Say 'what about now' or 'check my sign'.")
+                        
+                        # Check for exit commands
+                        elif any(k in user_input_norm for k in EXIT_KEYWORDS):
+                            speak_text("Exiting. Goodbye!")
+                            return 
+                        
                         else:
-                            speak_text("I had trouble with the camera. Check the connections.")
-
-                    elif any(cmd in user_input for cmd in Config.EXIT_COMMANDS):
-                        speak_text("Great work today! See you next time.")
-                        return 
+                             # Ignore non-command speech
+                             pass
                         
-                    elif user_input:
-                        speak_text("I'm focused on checking your signs! Just tell me 'show me' when you're ready.")
-
-                    print("\nTutor Bot is now listening again...")
+                    # Reset the recognizer for the next phrase
                     rec.Reset() 
                     
+                else:
+                    # Partial result
+                    pass
+
     except KeyboardInterrupt:
-        speak_text("Session paused.")
+        speak_text("\nInterrupted. Exiting.")
         sys.exit(0)
     except Exception as e:
-        print(f"\nFATAL ERROR: {type(e).__name__}: {e}")
+        speak_text(f"An unexpected error occurred: {type(e).__name__}: {str(e)}")
         sys.exit(1)
 
+
 if __name__ == "__main__":
-    run_tutor_bot()
+    main()
