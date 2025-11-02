@@ -28,11 +28,7 @@ Now flight test your interactive prototype and **note down your observations**:
 
 After testing our prototype, we found that lighting conditions and the relative time when the image is taken of the user had the largest impact on the system's performance. If the image is taken too early or the lighting is not "right", MoonDream seems to struggle when classifying the gesture. We also found that the interaction didn't map well to how humans communicate, that is, if we were learning from a teacher, there would be more subtlety and temporal variation in the interaction which isn't present in the current, rigid back and forth interaction. The prototype code is at [moondream_sign.py](moondream_sign.py).
 
-**\*\*\*Think about someone using the system. Describe how you think this will work.\*\*\***
-1. Are they aware of the uncertainties in the system?
-1. How bad would they be impacted by a miss classification?
-1. How could change your interactive system to address this?
-1. Are there optimizations you can try to do on your sense-making algorithm.
+**Think about someone using the system. Describe how you think this will work.**
 
 In this case, we found that there is already implicit frustration when trying to learn a new language. Thus, if the system ever said anything wrong, there is an immediate loss of user trust. In experimenting with other platforms, we came across [Google AI Live](https://aistudio.google.com/live) which performed much better than our initial prototype. The reason for this seems to be that they feed in the video of the user as opposed to a single frame. We believe this is a more natural way to capture the interaction from the user and will be exploring this in the second part of the lab. However, even Google's model struggled with longer videos and conversations where it assumes everything the user does is correct: 
 
@@ -52,10 +48,19 @@ During the lecture, we mentioned questions to help characterize a material:
 * What are other properties/behaviors of X?
 * How does X feel?
 
-**\*\*\*Include a short video demonstrating the answers to these questions.\*\*\***
+**Include a short video demonstrating the answers to these questions.**
+
+Video Link : [HERE](https://youtu.be/ZU5NM-oH540)
+
 
 ### Part 2.
 
 Following exploration and reflection from Part 1, finish building your interactive system, and demonstrate it in use with a video.
 
-**\*\*\*Include a short video demonstrating the finished result.\*\*\***
+**Include a short video demonstrating the finished result.**
+
+Video Link : [HERE](https://youtube.com/shorts/vKblgSUKpPI?si=JV_WB6N9sYURmRk5)
+
+### AI / Team Contributions 
+
+Gemini was only used to develop the **moondream_sign.py** script. The ideation was done by the whole team and design/documentation of the system was primarily done by Nikhil Gangaram, Viha Srinivas, and Arya Prasad.
