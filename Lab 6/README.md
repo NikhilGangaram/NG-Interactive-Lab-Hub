@@ -1,6 +1,6 @@
 # Distributed Interaction
 
-**NAMES OF COLLABORATORS HERE**
+**Sachin Jojode, Viha Srinivas, and Arya Prasad**
 
 For submission, replace this section with your documentation!
 
@@ -24,102 +24,21 @@ Build interactive systems where **multiple devices communicate over a network** 
 
 ## Part A: MQTT Messaging
 
-MQTT = lightweight messaging for IoT. Publish/subscribe model with central broker.
-
-**Concepts:**
-- **Broker**: `farlab.infosci.cornell.edu:1883`
-- **Topic**: Like `IDD/bedroom/temperature` (use `#` wildcard)
-- **Publish/Subscribe**: Send and receive messages
-
-**Install MQTT tools on your Pi:**
-```bash
-sudo apt-get update
-sudo apt-get install -y mosquitto-clients
-```
-
-**Test it:**
-
-**Subscribe to messages (listener):**
-```bash
-mosquitto_sub -h farlab.infosci.cornell.edu -p 1883 -t 'IDD/#' -u idd -P 'device@theFarm'
-```
-
-**Publish a message (sender):**
-```bash
-mosquitto_pub -h farlab.infosci.cornell.edu -p 1883 -t 'IDD/test/yourname' -m 'Hello!' -u idd -P 'device@theFarm'
-```
-
-> **💡 Tips:**
-> - Replace `yourname` with your actual name in the topic
-> - Use single quotes around the password: `'device@theFarm'`
-
-**🔧 Debug Tool:** View all MQTT messages in real-time at `http://farlab.infosci.cornell.edu:5001`
-
-![MQTT Explorer showing messages](imgs/MQTT-explorer.png)
-
 **💡 Brainstorm 5 ideas for messaging between devices**
+
+- Talk with Your Hands (Gesture Communicator): Imagine one Pi is watching someone who can't easily talk or hear. When they make a hand sign (like in sign language), the Pi recognizes it and sends a simple message to the others. The other Pis then light up or show text, acting as simple helpers for communication across the house.
+
+- The Three-Part Singing Crew (Harmony Maker): You sing into one Pi, and instantly, the other two Pis act like backup singers. They each take your voice and play it back slightly higher and slightly lower, making it sound like you have a three-person choir. It's a way to use the network to share and process sound in real time.
+
+- House Party Lights (Digital Disco): This turns your Pis into party starters. One Pi listens for loud noises or clapping, and another watches for people dancing or moving around. They quickly tell the third Pi how active things are, and all the lights flash and change colors together, making the atmosphere match the fun.
+
+- "What Do We Need?" Kitchen Checker (Inventory Helper): You point the cameras at different storage spots—like the pantry shelf and the fridge. The Pis quietly watch what's there and what's missing. If you run out of milk or bread, they send you a simple alert, saving you a trip to the store.
+
+- The Three-Eye Watchdog (Distributed Security): You put the three cameras in important spots, like the front door and the backyard. If one camera sees any unexpected movement, it immediately shouts a warning across the network. The third Pi acts as the main alarm box, setting off a big flash on all the lights to let everyone know something is wrong in the house.
 
 ---
 
 ## Part B: Collaborative Pixel Grid
-
-Each Pi = one pixel, controlled by RGB sensor, displayed in real-time grid.
-
-**Architecture:** `Pi (sensor) → MQTT → Server → Web Browser`
-
-**Setup:**
-
-1. **Sensor**
-
-#### Light/Proximity/Gesture sensor (APDS-9960)
-We use this sensor [Adafruit APDS-9960](https://www.adafruit.com/product/3595) for this exmaple to detect light (also RGB)
- 
-<img src="https://cdn-shop.adafruit.com/970x728/3595-06.jpg" width=200>
-
-Connect it to your pi with Qwiic connector
-
-
-<img src="imgs/IMG_0270.jpg" height="200" />
-We need to use the screen to display the color detection, so we need to stop the running piscreen.service to make your screen available again
-
-```bash
-# stop the screen service
-sudo systemctl stop piscreen.service
-```
-
-if you want to restart the screen service
-```bash
-# start the screen service
-sudo systemctl start piscreen.service
-```
- 
-2. **Server** (one person on laptop):
-```bash
-cd "Lab 6"  
-source .venv/bin/activate
-pip install -r requirements-server.txt
-python app.py
-```
-
-2. **View in browser:**
-   - Grid: `http://farlab.infosci.cornell.edu:5000`
-   - Controller: `http://farlab.infosci.cornell.edu:5000/controller`
-
-3. **Pi publisher** (everyone on their Pi):
-```bash
-# First time setup - create virtual environment
-cd "Lab 6"
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements-pi.txt
-
-# Run the publisher
-python pixel_grid_publisher.py
-```
-
-Hold colored objects near sensor to change your pixel!
-
-![Pixel grid with two devices](imgs/two-devices-grid.png)
 
 **📸 Include: Screenshot of grid + photo of your Pi setup**
 
@@ -127,37 +46,17 @@ Hold colored objects near sensor to change your pixel!
 
 ## Part C: Make Your Own
 
-**Requirements:**
-- 3+ people, 3+ Pis
-- Each Pi contributes sensor input via MQTT
-- Meaningful or fun interaction
-
-**Ideas:**
-
-**Sensor Fortune Teller**
-- Each Pi sends 0-255 from different sensor
-- Server generates fortunes from combined values
-
-**Frankenstories**
-- Sensor events → story elements (not text!)
-- Red = danger, gesture up = climbed, distance <10cm = suddenly
-
-**Distributed Instrument**
-- Each Pi = one musical parameter
-- Only works together
-
-**Others:** Games, presence display, mood ring
-
-### Deliverables
-
-Replace this README with your documentation:
-
 **1. Project Description**
 - What does it do? Why interesting? User experience?
+
+We've chosen to build towards our final project by building the gesture controlled modules. The idea is to use cheaper computers (raspberry pi's) to communicate with a larger computer (our laptops) to update a global state in an accessible way. Specifically, we've chosen to encode two gestures akin to ASL that a user can input to change the global consensus between devices. In this case, we've chosen to have two gestures that cycle through colors of the rainbow in different directions. 
 
 **2. Architecture Diagram**
 - Hardware, connections, data flow
 - Label input/computation/output
+
+![Sketch](imgs/sketch.png "Sketch")
+![Diagram](imgs/diagram.png "Diagram")
 
 **3. Build Documentation**
 - Photos of each Pi + sensors
