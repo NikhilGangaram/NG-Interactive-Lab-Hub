@@ -47,21 +47,21 @@ Build interactive systems where **multiple devices communicate over a network** 
 ## Part C: Make Your Own
 
 **1. Project Description**
-- What does it do? Why interesting? User experience?
 
 We've chosen to build towards our final project by building the gesture controlled modules. The idea is to use cheaper computers (raspberry pi's) to communicate with a larger computer (our laptops) to update a global state in an accessible way. Specifically, we've chosen to encode two gestures akin to ASL that a user can input to change the global consensus between devices. In this case, we've chosen to have two gestures that cycle through colors of the rainbow in different directions. 
 
 **2. Architecture Diagram**
-- Hardware, connections, data flow
-- Label input/computation/output
 
 ![Sketch](imgs/sketch.png "Sketch")
 ![Diagram](imgs/diagram.png "Diagram")
 
 **3. Build Documentation**
-- Photos of each Pi + sensors
-- MQTT topics used
-- Code snippets with explanations
+
+We broke our process down into 3 main steps : pi-pi communication, gesture control, and then integration. Here are the 3 videos for each part:
+
+[Pi-Pi Communication](https://youtu.be/l3sK-Un6r_g)
+[Gesture Control](https://youtube.com/shorts/ilUMCtHcV4I?feature=share)
+[Integration](https://youtube.com/shorts/WWuHhcyBsaM?feature=share)
 
 **4. User Testing**
 - **Test with 2+ people NOT on your team**
@@ -70,73 +70,21 @@ We've chosen to build towards our final project by building the gesture controll
 - What surprised them?
 - What would they change?
 
+[Steph's Demo](TODO)
+
+Sachin's girlfriend, Thirandi, was visitng and also tried the system. She wasn't comfortable being on camera but thought it was a fun idea. She mentioned that the latency made the system feel unfinished as it wasn't an instantaenous cahnge. Also, she mentioned that the number of gestures being so few was unintuitive. 
+
 **5. Reflection**
 - What worked well?
 - Challenges with distributed interaction?
 - How did sensor events work?
 - What would you improve?
 
----
-
-## Code Files
-
-**Server files:**
-- `app.py` - Pixel grid server (Flask + WebSocket + MQTT)
-- `mqtt_viewer.py` - MQTT message viewer for debugging
-- `mqtt_bridge.py` - MQTT → WebSocket bridge
-- `requirements-server.txt` - Server dependencies
-
-**Pi files:**
-- `pixel_grid_publisher.py` - Example (RGB sensor → MQTT)
-- `requirements-pi.txt` - Pi dependencies
-
-**Web interface:**
-- `templates/grid.html` - Pixel grid display
-- `templates/controller.html` - Color picker
-- `templates/mqtt_viewer.html` - Message viewer
+The software modules that we developed were quite stable due to the technology being proven and tested. However, the early stages of the computer vision pipeline were quite jumpy and didn't always get the right action from the user (huge shoutout to Arya for refining that pipeline). The sensor events are triggers from the camera which then percolate through the MQTT network to update the other pi's. 
 
 ---
 
-## Debugging Tools
+## AI / Team Contributions 
 
-**MQTT Message Viewer:** `http://farlab.infosci.cornell.edu:5001`
-- See all MQTT messages in real-time
-- View topics and payloads
-- Helpful for debugging your own projects
-
-**Command line:**
-```bash
-# See all IDD messages
-mosquitto_sub -h farlab.infosci.cornell.edu -p 1883 -t "IDD/#" -u idd -P "device@theFarm"
-```
-
----
-
-## Troubleshooting
-
-**MQTT:** Broker `farlab.infosci.cornell.edu:1883`, user `idd`, pass `device@theFarm`
-
-**Sensor:** Check `i2cdetect -y 1`, APDS-9960 at `0x39`
-
-**Grid:** Verify server running, check MQTT in console, test with web controller
-
-**Pi venv:** Make sure to activate: `source .venv/bin/activate`
-
-
----
-
-## Submission Checklist
-
-Before submitting:
-- [ ] Delete prep/instructions above
-- [ ] Add YOUR project documentation
-- [ ] Include photos/videos/diagrams  
-- [ ] Document user testing with non-team members
-- [ ] Add reflection on learnings
-- [ ] List team names at top
-
-**Your README = story of what YOU built!**
-
----
-
-Resources: [MQTT Guide](https://www.hivemq.com/mqtt-essentials/) | [Paho Python](https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php) | [Flask-SocketIO](https://flask-socketio.readthedocs.io/)
+* Gemini was very helpful during the initial ideation phases. While we came up with the ideas, it was helpful in creating the write up. Also, we used it to refine and create the images for the sketch and software diagram for the control flow (as well as to develop the code). 
+* All team members helped in both the ideation and software development stages of this project. 
