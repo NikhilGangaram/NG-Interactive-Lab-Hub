@@ -65,20 +65,12 @@ We broke our process down into 3 main steps : pi-pi communication, gesture contr
 
 **4. User Testing**
 - **Test with 2+ people NOT on your team**
-- Photos/video of use
-- What did they think before trying?
-- What surprised them?
-- What would they change?
 
-[Steph's Demo](TODO)
+[Steph's Demo](https://youtu.be/ZovkM4EohBY)
 
 Sachin's girlfriend, Thirandi, was visitng and also tried the system. She wasn't comfortable being on camera but thought it was a fun idea. She mentioned that the latency made the system feel unfinished as it wasn't an instantaenous cahnge. Also, she mentioned that the number of gestures being so few was unintuitive. 
 
 **5. Reflection**
-- What worked well?
-- Challenges with distributed interaction?
-- How did sensor events work?
-- What would you improve?
 
 The software modules that we developed were quite stable due to the technology being proven and tested. However, the early stages of the computer vision pipeline were quite jumpy and didn't always get the right action from the user (huge shoutout to Arya for refining that pipeline). The sensor events are triggers from the camera which then percolate through the MQTT network to update the other pi's. 
 
