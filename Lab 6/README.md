@@ -66,7 +66,8 @@ We broke our process down into 3 main steps : pi-pi communication, gesture contr
 **4. User Testing**
 - **Test with 2+ people NOT on your team**
 
-[Steph's Demo](https://youtu.be/ZovkM4EohBY)
+This is feedback from one of our friends outside the class : Stephanie Kim. 
+[Steph's Feedback](https://youtu.be/ZovkM4EohBY)
 
 Sachin's girlfriend, Thirandi, was visitng and also tried the system. She wasn't comfortable being on camera but thought it was a fun idea. She mentioned that the latency made the system feel unfinished as it wasn't an instantaenous cahnge. Also, she mentioned that the number of gestures being so few was unintuitive. 
 
